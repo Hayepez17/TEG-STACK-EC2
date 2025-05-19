@@ -1,0 +1,9 @@
+apiVersion: 1
+
+providers:
+  - name: Default # A uniquely identifiable name for the provider
+    type: file
+    folder: 'demo'
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards

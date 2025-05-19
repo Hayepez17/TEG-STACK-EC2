@@ -1,0 +1,2194 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 8,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "a7af9c36-36bc-413b-b7bb-ebba3cc281d2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "thresholdsStyle": {
+              "mode": "color",
+              "thresholds": []
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 27,
+        "w": 3,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "alwaysVisibleFilter": false,
+        "autoScroll": false,
+        "collapsedByDefault": false,
+        "customValue": false,
+        "displayMode": "table",
+        "emptyValue": false,
+        "favorites": {
+          "enabled": false,
+          "storage": "browser"
+        },
+        "filter": false,
+        "groupSelection": false,
+        "header": false,
+        "isUseLocalTime": false,
+        "minimizeOutputFormat": "text",
+        "padding": 10,
+        "persistent": false,
+        "saveSelectedGroup": false,
+        "saveSelectedGroupKey": "",
+        "showGroupTotal": false,
+        "showLabel": false,
+        "showName": false,
+        "showResetButton": false,
+        "showTotal": false,
+        "statusSort": false,
+        "sticky": false,
+        "tabsInOrder": true,
+        "variable": "_panels"
+      },
+      "pluginVersion": "3.6.0",
+      "type": "volkovlabs-variable-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "a7af9c36-36bc-413b-b7bb-ebba3cc281d2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "thresholdsStyle": {
+              "mode": "color",
+              "thresholds": []
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 21,
+        "x": 3,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "alwaysVisibleFilter": false,
+        "autoScroll": false,
+        "collapsedByDefault": false,
+        "customValue": false,
+        "displayMode": "minimize",
+        "emptyValue": false,
+        "favorites": {
+          "enabled": false,
+          "storage": "browser"
+        },
+        "filter": false,
+        "groupSelection": false,
+        "header": true,
+        "isUseLocalTime": false,
+        "minimizeOutputFormat": "text",
+        "padding": 10,
+        "persistent": false,
+        "saveSelectedGroup": false,
+        "saveSelectedGroupKey": "",
+        "showGroupTotal": false,
+        "showLabel": false,
+        "showName": false,
+        "showResetButton": false,
+        "showTotal": false,
+        "statusSort": false,
+        "sticky": false,
+        "tabsInOrder": true,
+        "variable": "_client"
+      },
+      "pluginVersion": "3.6.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "a7af9c36-36bc-413b-b7bb-ebba3cc281d2"
+          },
+          "refId": "A"
+        }
+      ],
+      "type": "volkovlabs-variable-panel"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 21,
+        "x": 3,
+        "y": 2
+      },
+      "id": 3,
+      "options": {
+        "buttonGroup": {
+          "orientation": "center",
+          "size": "md"
+        },
+        "confirmModal": {
+          "body": "Please confirm to update changed values",
+          "cancel": "Cancel",
+          "columns": {
+            "include": [
+              "name",
+              "newValue"
+            ],
+            "name": "Label",
+            "newValue": "New Value",
+            "oldValue": "Old Value"
+          },
+          "confirm": "Confirm",
+          "elementDisplayMode": "all",
+          "title": "Confirm update request"
+        },
+        "elementValueChanged": "",
+        "elements": [
+          {
+            "allowCustomValue": false,
+            "id": "sensor_id",
+            "labelWidth": 10,
+            "options": [],
+            "optionsSource": "Query",
+            "queryOptions": {
+              "label": "name_serial",
+              "source": "B",
+              "value": "id"
+            },
+            "section": "section1",
+            "title": "Sensor",
+            "tooltip": "",
+            "type": "select",
+            "uid": "7ab65cc5-9304-430f-ad29-d4bf8ab399eb",
+            "unit": "",
+            "value": "",
+            "width": 30
+          },
+          {
+            "allowCustomValue": false,
+            "id": "location_id",
+            "labelWidth": 10,
+            "options": [],
+            "optionsSource": "Query",
+            "queryOptions": {
+              "label": "name",
+              "source": "C",
+              "value": "id"
+            },
+            "section": "section1",
+            "title": "Location",
+            "tooltip": "",
+            "type": "select",
+            "uid": "8408a2ef-ff0d-4f9f-a698-ac3f5a1089db",
+            "unit": "",
+            "value": "",
+            "width": 30
+          },
+          {
+            "allowCustomValue": false,
+            "id": "variable_id",
+            "labelWidth": 10,
+            "options": [],
+            "optionsSource": "Query",
+            "queryOptions": {
+              "label": "name",
+              "source": "D",
+              "value": "id"
+            },
+            "section": "section1",
+            "title": "Variable",
+            "tooltip": "",
+            "type": "select",
+            "uid": "68c63045-462f-40d9-9dbe-1c145a5b5229",
+            "unit": "",
+            "value": "",
+            "width": 30
+          },
+          {
+            "allowCustomValue": false,
+            "id": "device_id",
+            "labelWidth": 10,
+            "options": [],
+            "optionsSource": "Query",
+            "queryOptions": {
+              "label": "mac_address",
+              "source": "A",
+              "value": "id"
+            },
+            "section": "section1",
+            "title": "Device",
+            "tooltip": "",
+            "type": "select",
+            "uid": "b386db64-067b-413a-a355-e76a82764ba9",
+            "unit": "",
+            "value": "",
+            "width": 30
+          },
+          {
+            "fieldName": "min",
+            "id": "min",
+            "labelWidth": 10,
+            "section": "section2",
+            "title": "Min",
+            "tooltip": "",
+            "type": "number",
+            "uid": "92d23ab2-d76d-4c6c-91dd-91c4cecff17d",
+            "unit": "",
+            "value": 0,
+            "width": 10
+          },
+          {
+            "fieldName": "max",
+            "id": "max",
+            "labelWidth": 10,
+            "section": "section2",
+            "title": "Max",
+            "tooltip": "",
+            "type": "number",
+            "uid": "807de31b-164c-4f6e-94df-64cad93575d1",
+            "unit": "",
+            "value": 0,
+            "width": 10
+          },
+          {
+            "fieldName": "warn",
+            "id": "warning",
+            "labelWidth": 10,
+            "section": "section2",
+            "title": "Warning",
+            "tooltip": "",
+            "type": "number",
+            "uid": "5180d994-3e38-493c-9ab2-2c7ed953107a",
+            "unit": "",
+            "value": 0,
+            "width": 10
+          },
+          {
+            "fieldName": "crit",
+            "id": "critical",
+            "labelWidth": 10,
+            "section": "section2",
+            "title": "Critical",
+            "tooltip": "",
+            "type": "number",
+            "uid": "7fed9824-b6eb-4bb0-8573-810663422407",
+            "unit": "",
+            "value": 0,
+            "width": 10
+          },
+          {
+            "fieldName": "notify",
+            "id": "notify_every",
+            "max": 60,
+            "min": 5,
+            "section": "",
+            "title": "T Notify",
+            "tooltip": "time that must elapse between unconfirmed alarm notifications",
+            "type": "number",
+            "uid": "1f2343cf-7188-4426-adf6-94099430256f",
+            "unit": "Min",
+            "value": 0,
+            "width": 10
+          },
+          {
+            "disableIf": "",
+            "fieldName": "offset",
+            "id": "offset",
+            "labelWidth": 10,
+            "section": "",
+            "showIf": "",
+            "title": "Offset",
+            "tooltip": "",
+            "type": "number",
+            "uid": "77b49f8b-9b74-45d4-ae95-f2423c7412e7",
+            "unit": "",
+            "value": 0,
+            "width": 10
+          },
+          {
+            "fieldName": "calibration",
+            "id": "calibration_factor",
+            "labelWidth": 10,
+            "section": "",
+            "title": "C. Factor",
+            "tooltip": "",
+            "type": "number",
+            "uid": "c7581056-a43b-4074-ba6c-2d930d62e6df",
+            "unit": "",
+            "value": 0,
+            "width": 10
+          },
+          {
+            "allowCustomValue": false,
+            "fieldName": "status",
+            "id": "status",
+            "labelWidth": 10,
+            "options": [
+              {
+                "id": "1",
+                "label": "Enable",
+                "type": "number",
+                "value": 1
+              }
+            ],
+            "optionsSource": "Custom",
+            "section": "",
+            "title": "Status",
+            "tooltip": "",
+            "type": "checkboxList",
+            "uid": "f08b9b9e-78f5-41c1-89a5-e16a6bde1e86",
+            "unit": "",
+            "value": []
+          }
+        ],
+        "initial": {
+          "code": "console.log(context.panel.data, context.panel.response, context.panel.initial, context.panel.elements);\n\nreturn;\n\n/**\n * Data Source\n * Requires form elements to be defined\n */\nconst dataQuery = context.utils.toDataQueryResponse(context.panel.response);\nconsole.log(dataQuery);",
+          "contentType": "application/json",
+          "datasource": "Static Data Source",
+          "getPayload": "return {}",
+          "highlight": false,
+          "highlightColor": "red",
+          "method": "datasource",
+          "payload": {
+            "frame": {
+              "fields": [
+                {
+                  "config": {},
+                  "name": "notify",
+                  "type": "number",
+                  "values": [
+                    15
+                  ]
+                },
+                {
+                  "config": {},
+                  "name": "min",
+                  "type": "number",
+                  "values": [
+                    0
+                  ]
+                },
+                {
+                  "config": {},
+                  "name": "max",
+                  "type": "string",
+                  "values": [
+                    "100"
+                  ]
+                },
+                {
+                  "config": {},
+                  "name": "warn",
+                  "type": "number",
+                  "values": [
+                    85
+                  ]
+                },
+                {
+                  "config": {},
+                  "name": "crit",
+                  "type": "number",
+                  "values": [
+                    95
+                  ]
+                },
+                {
+                  "config": {},
+                  "name": "offset",
+                  "type": "number",
+                  "values": [
+                    0
+                  ]
+                },
+                {
+                  "config": {},
+                  "name": "calibration",
+                  "type": "number",
+                  "values": [
+                    1
+                  ]
+                },
+                {
+                  "config": {},
+                  "name": "status",
+                  "type": "number",
+                  "values": [
+                    1
+                  ]
+                }
+              ],
+              "meta": {}
+            }
+          }
+        },
+        "layout": {
+          "orientation": "horizontal",
+          "padding": 10,
+          "sectionVariant": "default",
+          "sections": [
+            {
+              "id": "section1",
+              "name": ""
+            },
+            {
+              "id": "section2",
+              "name": ""
+            },
+            {
+              "id": "",
+              "name": ""
+            }
+          ],
+          "variant": "split"
+        },
+        "reset": {
+          "backgroundColor": "purple",
+          "foregroundColor": "yellow",
+          "icon": "process",
+          "text": "Reset",
+          "variant": "destructive"
+        },
+        "resetAction": {
+          "code": "if (context.panel.response) {\n  context.grafana.notifySuccess(['Update', 'Values updated successfully.']);\n  context.grafana.locationService.reload();\n} else {\n  context.grafana.notifyError(['Update', 'An error occurred updating values.']);\n}",
+          "confirm": false,
+          "getPayload": "return {}",
+          "mode": "initial",
+          "payload": {}
+        },
+        "saveDefault": {
+          "icon": "save",
+          "text": "Save Default",
+          "variant": "hidden"
+        },
+        "submit": {
+          "backgroundColor": "purple",
+          "foregroundColor": "yellow",
+          "icon": "cloud-upload",
+          "text": "Submit",
+          "variant": "primary"
+        },
+        "sync": true,
+        "update": {
+          "code": "if (context.panel.response) {\n  context.grafana.notifySuccess(['Update', 'Values updated successfully.']);\n  context.grafana.locationService.reload();\n} else {\n  context.grafana.notifyError(['Update', 'An error occurred updating values.']);\n}",
+          "confirm": true,
+          "contentType": "application/json",
+          "datasource": "MySQL_TEG_DB",
+          "getPayload": "const payload = {};\n\ncontext.panel.elements.forEach((element) => {\n  if (!element.value) {\n    return;\n  }\n\n  payload[element.id] = element.value;\n})\n\nreturn payload;\n\n// return {\n//   rawSql: ` INSERT INTO `db-teg-test1`.device_locations ( device_id, client_id, location_id, variable_id, sensor_id, notify_every, min, max, warning, critical, offset, calibration_factor, status) VALUES ('${payload.device_id}', ${_client_id}, ${payload.location_id}, ${payload.variable_id}, ${payload.sensor_id}, ${payload.notify_every}, ${payload.min}, ${payload.max}, ${payload.warning}, ${payload.critical}, ${payload.offset}, ${payload.calibration_factor}, ${payload.status})`,\n//   format: 'table'\n// };",
+          "method": "datasource",
+          "payload": {
+            "0": "c",
+            "1": "o",
+            "2": "n",
+            "3": "s",
+            "4": "t",
+            "5": " ",
+            "6": "p",
+            "7": "a",
+            "8": "y",
+            "9": "l",
+            "10": "o",
+            "11": "a",
+            "12": "d",
+            "13": " ",
+            "14": "=",
+            "15": " ",
+            "16": "{",
+            "17": "}",
+            "18": ";",
+            "19": "\n",
+            "20": "\n",
+            "21": "c",
+            "22": "o",
+            "23": "n",
+            "24": "t",
+            "25": "e",
+            "26": "x",
+            "27": "t",
+            "28": ".",
+            "29": "p",
+            "30": "a",
+            "31": "n",
+            "32": "e",
+            "33": "l",
+            "34": ".",
+            "35": "e",
+            "36": "l",
+            "37": "e",
+            "38": "m",
+            "39": "e",
+            "40": "n",
+            "41": "t",
+            "42": "s",
+            "43": ".",
+            "44": "f",
+            "45": "o",
+            "46": "r",
+            "47": "E",
+            "48": "a",
+            "49": "c",
+            "50": "h",
+            "51": "(",
+            "52": "(",
+            "53": "e",
+            "54": "l",
+            "55": "e",
+            "56": "m",
+            "57": "e",
+            "58": "n",
+            "59": "t",
+            "60": ")",
+            "61": " ",
+            "62": "=",
+            "63": ">",
+            "64": " ",
+            "65": "{",
+            "66": "\n",
+            "67": " ",
+            "68": " ",
+            "69": "i",
+            "70": "f",
+            "71": " ",
+            "72": "(",
+            "73": "!",
+            "74": "e",
+            "75": "l",
+            "76": "e",
+            "77": "m",
+            "78": "e",
+            "79": "n",
+            "80": "t",
+            "81": ".",
+            "82": "v",
+            "83": "a",
+            "84": "l",
+            "85": "u",
+            "86": "e",
+            "87": ")",
+            "88": " ",
+            "89": "{",
+            "90": "\n",
+            "91": " ",
+            "92": " ",
+            "93": " ",
+            "94": " ",
+            "95": "r",
+            "96": "e",
+            "97": "t",
+            "98": "u",
+            "99": "r",
+            "100": "n",
+            "101": ";",
+            "102": "\n",
+            "103": " ",
+            "104": " ",
+            "105": "}",
+            "106": "\n",
+            "107": "\n",
+            "108": " ",
+            "109": " ",
+            "110": "p",
+            "111": "a",
+            "112": "y",
+            "113": "l",
+            "114": "o",
+            "115": "a",
+            "116": "d",
+            "117": "[",
+            "118": "e",
+            "119": "l",
+            "120": "e",
+            "121": "m",
+            "122": "e",
+            "123": "n",
+            "124": "t",
+            "125": ".",
+            "126": "i",
+            "127": "d",
+            "128": "]",
+            "129": " ",
+            "130": "=",
+            "131": " ",
+            "132": "e",
+            "133": "l",
+            "134": "e",
+            "135": "m",
+            "136": "e",
+            "137": "n",
+            "138": "t",
+            "139": ".",
+            "140": "v",
+            "141": "a",
+            "142": "l",
+            "143": "u",
+            "144": "e",
+            "145": ";",
+            "146": "\n",
+            "147": "}",
+            "148": ")",
+            "149": "\n",
+            "150": "\n",
+            "151": "r",
+            "152": "e",
+            "153": "t",
+            "154": "u",
+            "155": "r",
+            "156": "n",
+            "157": " ",
+            "158": "p",
+            "159": "a",
+            "160": "y",
+            "161": "l",
+            "162": "o",
+            "163": "a",
+            "164": "d",
+            "165": ";",
+            "dataset": "db-teg-test1",
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "INSERT INTO\r\n  `db-teg-test1`.device_locations (\r\n    device_id,\r\n    client_id,\r\n    location_id,\r\n    variable_id,\r\n    sensor_id,\r\n    notify_every,\r\n    min,\r\n    max,\r\n    warning,\r\n    critical,\r\n    offset,\r\n    calibration_factor,\r\n    status\r\n  )\r\nVALUES\r\n  (\r\n    ${payload.device_id},\r\n    ${_client_id},\r\n    ${payload.location_id},\r\n    ${payload.variable_id},\r\n    ${payload.sensor_id},\r\n    ${payload.notify_every},\r\n    ${payload.min},\r\n    ${payload.max},\r\n    ${payload.warning},\r\n    ${payload.critical},\r\n    ${payload.offset},\r\n    ${payload.calibration_factor},\r\n    ${payload.status}\r\n  )",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "payloadMode": "all"
+        },
+        "updateEnabled": "auto"
+      },
+      "pluginVersion": "4.8.0",
+      "targets": [
+        {
+          "dataset": "db-teg-test1",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT d.id, d.mac_address FROM `db-teg-test1`.devices d\r\ninner join `db-teg-test1`.clients c on c.id = d.client_id\r\nwhere c.name = '$_client' and d.status != 0;\r\n\r\n-- SELECT * FROM `db-teg-test1`.device_locations;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "db-teg-test1",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select\r\n  s.id,\r\n  CONCAT_WS('@', s.name, s.serial) name_serial,\r\n  dl.id device_id\r\nfrom\r\n  `db-teg-test1`.sensors s\r\n  left join `db-teg-test1`.device_locations dl on dl.sensor_id = s.id\r\n  where dl.id IS NULL",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "db-teg-test1",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  l.id,\r\n  l.name\r\nFROM\r\n  `db-teg-test1`.locations l\r\n  INNER JOIN `db-teg-test1`.clients c on c.id = l.client_id\r\nWHERE\r\n  c.name = '$_client' and l.status != 0;",
+          "refId": "C",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "db-teg-test1",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT id, name FROM `db-teg-test1`.variables;",
+          "refId": "D",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Add New Device Location",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "boolean",
+                "targetField": "status"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "volkovlabs-form-panel"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 21,
+        "x": 3,
+        "y": 10
+      },
+      "id": 4,
+      "options": {
+        "nestedObjects": [],
+        "tables": [
+          {
+            "actionsColumnConfig": {
+              "alignment": "start",
+              "fontSize": "md",
+              "label": "",
+              "width": {
+                "auto": false,
+                "value": 100
+              }
+            },
+            "addRow": {
+              "enabled": false,
+              "permission": {
+                "mode": "",
+                "userRole": []
+              },
+              "request": {
+                "datasource": "",
+                "payload": {}
+              }
+            },
+            "deleteRow": {
+              "enabled": true,
+              "permission": {
+                "mode": "",
+                "userRole": []
+              },
+              "request": {
+                "datasource": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6",
+                "payload": {
+                  "dataset": "db-teg-test1",
+                  "editorMode": "code",
+                  "format": "table",
+                  "rawQuery": true,
+                  "rawSql": "DELETE FROM `db-teg-test1`.device_locations\r\nWHERE id = '${payload.id}'",
+                  "refId": "A",
+                  "sql": {
+                    "columns": [
+                      {
+                        "parameters": [],
+                        "type": "function"
+                      }
+                    ],
+                    "groupBy": [
+                      {
+                        "property": {
+                          "type": "string"
+                        },
+                        "type": "groupBy"
+                      }
+                    ],
+                    "limit": 50
+                  }
+                }
+              }
+            },
+            "expanded": false,
+            "items": [
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 25,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "id",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "queryOptions": {
+                      "label": "mac_address",
+                      "source": "D",
+                      "value": "id"
+                    },
+                    "type": "select"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "device_id",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "queryOptions": {
+                      "label": "name",
+                      "source": "L",
+                      "value": "id"
+                    },
+                    "type": "select"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "location_id",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "queryOptions": {
+                      "label": "name",
+                      "source": "V",
+                      "value": "id"
+                    },
+                    "type": "select"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "variable_id",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "queryOptions": {
+                      "label": "name_serial",
+                      "source": "S",
+                      "value": "id"
+                    },
+                    "type": "select"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "sensor_id",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 50,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "number"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "notify_every",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 50,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "number"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "min",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 50,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "number"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "max",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 50,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "number"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "warning",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 50,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "number"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "critical",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 50,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "number"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "offset",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 50,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "number"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "calibration_factor",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 50,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "boolean"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "status",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              }
+            ],
+            "name": "device_locations",
+            "pagination": {
+              "defaultPageSize": 10,
+              "enabled": false,
+              "mode": "client"
+            },
+            "rowHighlight": {
+              "backgroundColor": "transparent",
+              "columnId": "",
+              "enabled": false,
+              "scrollTo": "",
+              "smooth": false,
+              "variable": ""
+            },
+            "showHeader": true,
+            "update": {
+              "datasource": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6",
+              "payload": {
+                "dataset": "db-teg-test1",
+                "editorMode": "code",
+                "format": "table",
+                "rawQuery": true,
+                "rawSql": "UPDATE `db-teg-test1`.device_locations\r\nSET \r\n    device_id = '${payload.mac_address}',\r\n    client_id = '${_client_id}',\r\n    location_id = '${payload.location_id}',\r\n    variable_id = '${payload.variable_id}',\r\n    sensor_id = '${payload.sensor_id}',\r\n    notify_every = '${payload.notify_every}',\r\n    min = '${payload.min}',\r\n    max = '${payload.max}',\r\n    warning = '${payload.warning}',\r\n    critical = '${payload.critical}',\r\n    offset = '${payload.offset}',\r\n    calibration_factor = '${payload.calibration_factor}',\r\n    status = case when '${payload.status}' = 'true' then 1 else 0 end\r\nWHERE id = '${payload.id}';\r\n",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            }
+          }
+        ],
+        "toolbar": {
+          "alignment": "left"
+        }
+      },
+      "pluginVersion": "2.6.0",
+      "targets": [
+        {
+          "dataset": "db-teg-test1",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  dl.id,\n  d.mac_address device_id,\n  CONCAT_WS('@', s.name, s.serial) sensor_id,\n  l.name location_id,\n  v.name variable_id,\n  dl.notify_every,\n  dl.min,\n  dl.max,\n  dl.warning,\n  dl.critical,\n  dl.offset,\n  dl.calibration_factor,\n  dl.status\nFROM\n  `db-teg-test1`.device_locations dl\n  INNER JOIN `db-teg-test1`.variables v ON dl.variable_id = v.id\n  INNER JOIN `db-teg-test1`.devices d ON d.id = dl.device_id\n  INNER JOIN `db-teg-test1`.locations l ON dl.location_id = l.id\n  AND d.client_id = l.client_id\n  INNER JOIN `db-teg-test1`.clients c ON dl.client_id = c.id\n  INNER JOIN `db-teg-test1`.sensors s ON dl.sensor_id = s.id\nwhere\n  c.name = '$_client'\n  order by dl.id;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "db-teg-test1",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  d.id,\r\n  d.mac_address\r\nFROM\r\n  `db-teg-test1`.devices d\r\n  INNER JOIN `db-teg-test1`.clients c ON c.id = d.client_id\r\nWHERE\r\n  c.id = $_client_id\r\n  AND d.status != 0;",
+          "refId": "D",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "db-teg-test1",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  v.id,\r\n  v.name\r\nFROM\r\n  `db-teg-test1`.variables v\r\nWHERE\r\n  v.status != 0;",
+          "refId": "V",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "db-teg-test1",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  l.id,\r\n  l.name\r\nFROM\r\n  `db-teg-test1`.locations l\r\n  INNER JOIN `db-teg-test1`.clients c ON c.id = l.client_id\r\nWHERE\r\n  c.id = $_client_id\r\n  AND l.status != 0;",
+          "refId": "L",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "db-teg-test1",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select\r\n  s.id,\r\n  CONCAT_WS('@', s.name, s.serial) name_serial\r\nfrom\r\n  `db-teg-test1`.sensors s\r\n  left join `db-teg-test1`.device_locations dl on dl.sensor_id = s.id\r\n  where dl.id IS NULL",
+          "refId": "S",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "type": "volkovlabs-table-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Iambox",
+          "value": "Iambox"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select name from `db-teg-test1`.clients;",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "_client",
+        "options": [],
+        "query": "select name from `db-teg-test1`.clients;",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Device Locations",
+          "value": "Device Locations"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "_panels",
+        "options": [
+          {
+            "selected": false,
+            "text": "Dashboard",
+            "value": "Dashboard"
+          },
+          {
+            "selected": true,
+            "text": "Device Locations",
+            "value": "Device Locations"
+          },
+          {
+            "selected": false,
+            "text": "Settings",
+            "value": "Settings"
+          },
+          {
+            "selected": false,
+            "text": "Report",
+            "value": "Report"
+          }
+        ],
+        "query": "Dashboard, Device Locations, Settings,  Report",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "3",
+          "value": "3"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select id from `db-teg-test1`.clients where name = '$_client'",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "_client_id",
+        "options": [],
+        "query": "select id from `db-teg-test1`.clients where name = '$_client'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "2025-05-07T05:36:03.796Z",
+    "to": "2025-05-08T05:36:03.796Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Device Setings",
+  "uid": "d3f55778-92a4-4b02-b885-ec56e04b6e41",
+  "version": 16,
+  "weekStart": ""
+}

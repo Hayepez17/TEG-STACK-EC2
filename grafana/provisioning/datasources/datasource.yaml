@@ -1,0 +1,33 @@
+apiVersion: 1
+
+datasources:
+  - name: Static Data Source
+    type: marcusolsson-static-datasource
+    access: proxy
+    uid: a7af9c36-36bc-413b-b7bb-ebba3cc281d2
+    orgId: 1
+    version: 1
+    database:
+    basicAuth: false
+    basicAuthUser:
+    editable: false
+    withCredentials: false
+    isDefault: false
+    jasonData:
+      codeEditorEnabled: false
+  - name: MySQL_TEG_DB
+    type: mysql
+    access: proxy
+    orgId: 1
+    editable: true
+    uid: e24f5e1e-1c80-4692-b69a-8fcce13d21f6
+    url: ${TEG_DB_URL}:${TEG_DB_PORT}
+    user: ${TEG_DB_USR}
+    jsonData:
+      database: ''
+      maxOpenConns: 100 # Grafana v5.4+
+      maxIdleConns: 100 # Grafana v5.4+
+      maxIdleConnsAuto: true # Grafana v9.5.1+
+      connMaxLifetime: 14400 # Grafana v5.4+
+    secureJsonData:
+      password: ${TEG_DB_PASS}
