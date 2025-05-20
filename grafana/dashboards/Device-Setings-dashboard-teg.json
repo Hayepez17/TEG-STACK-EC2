@@ -18,14 +18,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 8,
+  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
-        "type": "marcusolsson-static-datasource",
-        "uid": "a7af9c36-36bc-413b-b7bb-ebba3cc281d2"
+        "type": "datasource",
+        "uid": "grafana"
       },
       "fieldConfig": {
         "defaults": {
@@ -41,6 +41,10 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -48,17 +52,20 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 27,
+        "h": 30,
         "w": 3,
         "x": 0,
         "y": 0
       },
-      "id": 2,
+      "id": 5,
       "options": {
+        "alertCustomMessage": "",
         "alwaysVisibleFilter": false,
         "autoScroll": false,
+        "browserTabNamePattern": "",
         "collapsedByDefault": false,
         "customValue": false,
+        "dashboardVariable": "_panel",
         "displayMode": "table",
         "emptyValue": false,
         "favorites": {
@@ -68,6 +75,7 @@
         "filter": false,
         "groupSelection": false,
         "header": false,
+        "isMinimizeForTable": false,
         "isUseLocalTime": false,
         "minimizeOutputFormat": "text",
         "padding": 10,
@@ -82,9 +90,10 @@
         "statusSort": false,
         "sticky": false,
         "tabsInOrder": true,
-        "variable": "_panels"
+        "variable": "_panel"
       },
-      "pluginVersion": "3.6.0",
+      "pluginVersion": "3.9.0",
+      "title": "Menu",
       "type": "volkovlabs-variable-panel"
     },
     {
@@ -124,8 +133,10 @@
       },
       "id": 1,
       "options": {
+        "alertCustomMessage": "",
         "alwaysVisibleFilter": false,
         "autoScroll": false,
+        "browserTabNamePattern": "",
         "collapsedByDefault": false,
         "customValue": false,
         "displayMode": "minimize",
@@ -137,6 +148,7 @@
         "filter": false,
         "groupSelection": false,
         "header": true,
+        "isMinimizeForTable": false,
         "isUseLocalTime": false,
         "minimizeOutputFormat": "text",
         "padding": 10,
@@ -153,7 +165,7 @@
         "tabsInOrder": true,
         "variable": "_client"
       },
-      "pluginVersion": "3.6.0",
+      "pluginVersion": "3.9.0",
       "targets": [
         {
           "datasource": {
@@ -400,7 +412,7 @@
         "initial": {
           "code": "console.log(context.panel.data, context.panel.response, context.panel.initial, context.panel.elements);\n\nreturn;\n\n/**\n * Data Source\n * Requires form elements to be defined\n */\nconst dataQuery = context.utils.toDataQueryResponse(context.panel.response);\nconsole.log(dataQuery);",
           "contentType": "application/json",
-          "datasource": "Static Data Source",
+          "datasource": "a7af9c36-36bc-413b-b7bb-ebba3cc281d2",
           "getPayload": "return {}",
           "highlight": false,
           "highlightColor": "red",
@@ -528,7 +540,7 @@
           "code": "if (context.panel.response) {\n  context.grafana.notifySuccess(['Update', 'Values updated successfully.']);\n  context.grafana.locationService.reload();\n} else {\n  context.grafana.notifyError(['Update', 'An error occurred updating values.']);\n}",
           "confirm": true,
           "contentType": "application/json",
-          "datasource": "MySQL_TEG_DB",
+          "datasource": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6",
           "getPayload": "const payload = {};\n\ncontext.panel.elements.forEach((element) => {\n  if (!element.value) {\n    return;\n  }\n\n  payload[element.id] = element.value;\n})\n\nreturn payload;\n\n// return {\n//   rawSql: ` INSERT INTO `db-teg-test1`.device_locations ( device_id, client_id, location_id, variable_id, sensor_id, notify_every, min, max, warning, critical, offset, calibration_factor, status) VALUES ('${payload.device_id}', ${_client_id}, ${payload.location_id}, ${payload.variable_id}, ${payload.sensor_id}, ${payload.notify_every}, ${payload.min}, ${payload.max}, ${payload.warning}, ${payload.critical}, ${payload.offset}, ${payload.calibration_factor}, ${payload.status})`,\n//   format: 'table'\n// };",
           "method": "datasource",
           "payload": {
@@ -726,7 +738,7 @@
         },
         "updateEnabled": "auto"
       },
-      "pluginVersion": "4.8.0",
+      "pluginVersion": "5.1.0",
       "targets": [
         {
           "dataset": "db-teg-test1",
@@ -894,7 +906,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 17,
+        "h": 20,
         "w": 21,
         "x": 3,
         "y": 10
@@ -2122,37 +2134,37 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "Device Locations",
-          "value": "Device Locations"
+          "value": "d3f55778-92a4-4b02-b885-ec56e04b6e41"
         },
         "hide": 2,
         "includeAll": false,
         "multi": false,
-        "name": "_panels",
+        "name": "_panel",
         "options": [
           {
             "selected": false,
             "text": "Dashboard",
-            "value": "Dashboard"
+            "value": "dadcde76-fafe-4e62-81c2-569dc8a101c3"
           },
           {
             "selected": true,
             "text": "Device Locations",
-            "value": "Device Locations"
+            "value": "d3f55778-92a4-4b02-b885-ec56e04b6e41"
           },
           {
             "selected": false,
             "text": "Settings",
-            "value": "Settings"
+            "value": "dc32e257-3a80-44c6-b04e-8dcddbe61430"
           },
           {
             "selected": false,
             "text": "Report",
-            "value": "Report"
+            "value": "O4tc_E6Gz"
           }
         ],
-        "query": "Dashboard, Device Locations, Settings,  Report",
+        "query": "Dashboard : dadcde76-fafe-4e62-81c2-569dc8a101c3, Device Locations : d3f55778-92a4-4b02-b885-ec56e04b6e41, Settings : dc32e257-3a80-44c6-b04e-8dcddbe61430,  Report : O4tc_E6Gz",
         "skipUrlSync": false,
         "type": "custom"
       },
@@ -2185,10 +2197,12 @@
     "from": "2025-05-07T05:36:03.796Z",
     "to": "2025-05-08T05:36:03.796Z"
   },
-  "timepicker": {},
+  "timepicker": {
+    "hidden": true
+  },
   "timezone": "",
   "title": "Device Setings",
   "uid": "d3f55778-92a4-4b02-b885-ec56e04b6e41",
-  "version": 16,
+  "version": 3,
   "weekStart": ""
 }

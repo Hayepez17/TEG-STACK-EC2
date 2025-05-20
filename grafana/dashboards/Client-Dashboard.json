@@ -1,0 +1,162 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 9,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "a7af9c36-36bc-413b-b7bb-ebba3cc281d2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "thresholdsStyle": {
+              "mode": "color",
+              "thresholds": []
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "alertCustomMessage": "",
+        "alwaysVisibleFilter": false,
+        "autoScroll": false,
+        "browserTabNamePattern": "",
+        "collapsedByDefault": false,
+        "customValue": false,
+        "dashboardVariable": "_panel",
+        "displayMode": "table",
+        "emptyValue": false,
+        "favorites": {
+          "enabled": false,
+          "storage": "browser"
+        },
+        "filter": false,
+        "groupSelection": false,
+        "header": false,
+        "isMinimizeForTable": false,
+        "isUseLocalTime": false,
+        "minimizeOutputFormat": "text",
+        "padding": 10,
+        "persistent": false,
+        "saveSelectedGroup": false,
+        "saveSelectedGroupKey": "",
+        "showGroupTotal": false,
+        "showLabel": false,
+        "showName": false,
+        "showResetButton": false,
+        "showTotal": false,
+        "statusSort": false,
+        "sticky": false,
+        "tabsInOrder": true,
+        "variable": "_panel"
+      },
+      "pluginVersion": "3.9.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "a7af9c36-36bc-413b-b7bb-ebba3cc281d2"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Menu",
+      "type": "volkovlabs-variable-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "Dashboard",
+          "value": "dadcde76-fafe-4e62-81c2-569dc8a101c3"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "_panel",
+        "options": [
+          {
+            "selected": true,
+            "text": "Dashboard",
+            "value": "dadcde76-fafe-4e62-81c2-569dc8a101c3"
+          },
+          {
+            "selected": false,
+            "text": "Device Locations",
+            "value": "d3f55778-92a4-4b02-b885-ec56e04b6e41"
+          },
+          {
+            "selected": false,
+            "text": "Settings",
+            "value": "dc32e257-3a80-44c6-b04e-8dcddbe61430"
+          },
+          {
+            "selected": false,
+            "text": "Report",
+            "value": "f75e42aa-b555-4d29-b2f7-817968f7264a"
+          }
+        ],
+        "query": "Dashboard : dadcde76-fafe-4e62-81c2-569dc8a101c3, Device Locations : d3f55778-92a4-4b02-b885-ec56e04b6e41, Settings : dc32e257-3a80-44c6-b04e-8dcddbe61430,  Report : f75e42aa-b555-4d29-b2f7-817968f7264a",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Client Dashboard",
+  "uid": "dadcde76-fafe-4e62-81c2-569dc8a101c3",
+  "version": 2,
+  "weekStart": ""
+}
