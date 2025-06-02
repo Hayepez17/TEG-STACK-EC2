@@ -3868,7 +3868,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Settings",
           "value": "dc32e257-3a80-44c6-b04e-8dcddbe61430"
         },

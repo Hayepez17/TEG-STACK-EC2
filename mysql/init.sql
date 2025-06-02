@@ -32,6 +32,7 @@ CREATE TABLE `sensors` (
   `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `serial` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `description` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -44,18 +45,18 @@ CREATE TABLE `sensors` (
 LOCK TABLES `sensors` WRITE;
 -- /*!40000 ALTER TABLE `sensors` DISABLE KEYS */;
 INSERT INTO `sensors` VALUES 
-(1,'ds18','FFFFFFFFFFFFFFF1','','2024-10-13 14:24:59'),
-(2,'ds18','FFFFFFFFFFFFFFF2','','2024-10-13 14:24:59'),
-(3,'ds18','FFFFFFFFFFFFFFF3','','2024-10-13 14:24:59'),
-(4,'ds18','FFFFFFFFFFFFFFF4','','2024-10-13 14:24:59'),
-(5,'ds18','FFFFFFFFFFFFFFF5','','2024-10-13 14:24:59'),
-(6,'ds18','FFFFFFFFFFFFFFF6','','2024-10-13 14:24:59'),
-(7,'modbus','78:21:84:9C:A9:AC@0104000002','DHT22 relative humidity sensor','2024-10-13 14:24:59'),
-(8,'modbus','78:21:84:9C:A9:AC@0104000202','DHT22 relative humidity sensor','2024-10-13 14:24:59'),
-(9,'batery','78:21:84:9C:A9:AC','Batery of M5Stack device','2024-10-13 14:24:59'),
-(10,'modbus','3C:61:05:0D:1C:08@0104000002','DHT22 relative humidity sensor','2024-10-13 14:24:59'),
-(11,'modbus','3C:61:05:0D:1C:08@0104000202','DHT22 relative humidity sensor','2024-10-13 14:24:59'),
-(12,'batery','78:21:84:9C:A9:AC','Batery of M5Stack device','2024-10-13 14:24:59');
+(1,'ds18','FFFFFFFFFFFFFFF1','',1,'2024-10-13 14:24:59'),
+(2,'ds18','FFFFFFFFFFFFFFF2','',1,'2024-10-13 14:24:59'),
+(3,'ds18','FFFFFFFFFFFFFFF3','',1,'2024-10-13 14:24:59'),
+(4,'ds18','FFFFFFFFFFFFFFF4','',1,'2024-10-13 14:24:59'),
+(5,'ds18','FFFFFFFFFFFFFFF5','',1,'2024-10-13 14:24:59'),
+(6,'ds18','FFFFFFFFFFFFFFF6','',1,'2024-10-13 14:24:59'),
+(7,'modbus','78:21:84:9C:A9:AC@0104000002','DHT22 relative humidity sensor',1,'2024-10-13 14:24:59'),
+(8,'modbus','78:21:84:9C:A9:AC@0104000202','DHT22 relative humidity sensor',1,'2024-10-13 14:24:59'),
+(9,'batery','78:21:84:9C:A9:AC','Batery of M5Stack device',1,'2024-10-13 14:24:59'),
+(10,'modbus','3C:61:05:0D:1C:08@0104000002','DHT22 relative humidity sensor',1,'2024-10-13 14:24:59'),
+(11,'modbus','3C:61:05:0D:1C:08@0104000202','DHT22 relative humidity sensor',1,'2024-10-13 14:24:59'),
+(12,'batery','78:21:84:9C:A9:AC','Batery of M5Stack device',1,'2024-10-13 14:24:59');
 -- /*!40000 ALTER TABLE `sensors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,12 +163,14 @@ DROP TABLE IF EXISTS `logger`;
 CREATE TABLE `logger` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `device_location_id` bigint NOT NULL,
+  `alarm_sensor_id` bigint NOT NULL,
   `client_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `location_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `alarm_level` tinyint NOT NULL DEFAULT '1',
+  `severity` tinyint NOT NULL DEFAULT '0',
+  `state` tinyint NOT NULL DEFAULT '0',
   `msg` text COLLATE utf8mb4_general_ci NOT NULL,
-  `recognized` tinyint NOT NULL DEFAULT '0',
-  `last_update` datetime NOT NULL,
+  `date_init` datetime NOT NULL,
+  `date_last` datetime NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -221,6 +224,7 @@ CREATE TABLE `users` (
   `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `phone` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `enable_notifications` tinyint NOT NULL DEFAULT '0',
+  `role` tinyint NOT NULL DEFAULT '5',
   `status` tinyint NOT NULL DEFAULT '1',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -236,12 +240,12 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 -- /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES 
-(1,1,'Hector Alejandro Yepez','hayepez17@gmail.com','+584124568563',2,1,'2024-10-13 14:41:34'),
-(2,1,'Hector Ramon Yepez','soportichy@gmail.com','+584123137928',0,1,'2024-10-13 14:41:34'),
-(3,1,'Victor Jose Yepez','','',0,1,'2024-10-13 14:41:34'),
-(4,2,'Rafael Rivero','','',0,1,'2024-10-13 14:41:34'),
-(5,2,'Alejandro Herrera','','',0,1,'2024-10-13 14:41:34'),
-(6,3,'Jackeline Morffe','jmorffe@gmail.com','+584143986352',0,1,'2024-10-13 14:41:34');
+(1,1,'Hector Alejandro Yepez','hayepez17@gmail.com','+584124568563',2,0,1,'2024-10-13 14:41:34'),
+(2,1,'Hector Ramon Yepez','soportichy@gmail.com','+584123137928',0,5,1,'2024-10-13 14:41:34'),
+(3,1,'Victor Jose Yepez','','',0,5,1,'2024-10-13 14:41:34'),
+(4,2,'Rafael Rivero','','',0,5,1,'2024-10-13 14:41:34'),
+(5,2,'Alejandro Herrera','','',0,5,1,'2024-10-13 14:41:34'),
+(6,3,'Jackeline Morffe','jmorffe@gmail.com','+584143986352',0,5,1,'2024-10-13 14:41:34');
 -- /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,11 +294,8 @@ CREATE TABLE `device_locations` (
   `location_id` bigint NOT NULL,
   `variable_id` bigint NOT NULL,
   `sensor_id` bigint NOT NULL,
-  `notify_every` int unsigned NOT NULL DEFAULT '15',
   `min` float NOT NULL,
   `max` float NOT NULL,
-  `warning` float NOT NULL,
-  `critical` float NOT NULL,
   `offset` float(10,8) NOT NULL DEFAULT '0.00000000',
   `calibration_factor` float(10,8) NOT NULL DEFAULT '1.00000000',
   `status` tinyint NOT NULL DEFAULT '1',
@@ -317,19 +318,75 @@ CREATE TABLE `device_locations` (
 -- Dumping data for table `device_locations`
 --
 
--- LOCK TABLES `device_locations` WRITE;
--- -- /*!40000 ALTER TABLE `device_locations` DISABLE KEYS */;
--- INSERT INTO `device_locations` VALUES 
--- (1,1,3,5,1,1,15,-30,40,28,30,0.00000000,1.00000000,1,'2024-10-13 15:25:35'),
--- (2,1,3,5,2,7,15,0,100,80,90,0.00000000,1.00000000,1,'2024-10-13 15:25:35'),
--- (3,1,3,1,1,2,15,-30,40,28,30,0.00000000,1.00000000,1,'2024-10-13 15:25:35'),
--- (4,1,3,2,1,3,15,-30,40,28,30,0.00000000,1.00000000,1,'2024-10-13 15:25:35'),
--- (5,1,3,3,1,4,15,-30,40,28,30,0.00000000,1.00000000,1,'2024-10-13 15:25:35'),
--- (6,1,3,4,1,5,15,-30,40,28,30,0.00000000,1.00000000,1,'2024-10-13 15:25:35'),
--- (7,2,3,6,1,6,15,-30,40,28,30,0.00000000,1.00000000,1,'2024-10-13 15:25:35'),
--- (8,2,3,6,2,8,15,0,100,80,90,0.00000000,1.00000000,1,'2024-10-13 15:25:35');
--- -- /*!40000 ALTER TABLE `device_locations` ENABLE KEYS */;
--- UNLOCK TABLES;
+LOCK TABLES `device_locations` WRITE;
+-- /*!40000 ALTER TABLE `device_locations` DISABLE KEYS */;
+INSERT INTO `device_locations` VALUES 
+(1,1,3,5,1,1,-30,40,0.00000000,1.00000000,1,'2024-10-13 15:25:35');
+-- /*!40000 ALTER TABLE `device_locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+--
+-- Table structure for table `alarm_sensors`
+--
+
+DROP TABLE IF EXISTS `alarm_sensors`;
+-- /*!40101 SET @saved_cs_client     = @@character_set_client */;
+-- /*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `alarm_sensors` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `device_location_id` bigint NOT NULL,
+  `client_id` bigint NOT NULL,
+  `type` int NOT NULL DEFAULT '0',
+  `severity` tinyint NOT NULL DEFAULT '0',
+  `alarm_role` tinyint NOT NULL DEFAULT '0',
+  `set_point` float NOT NULL DEFAULT '0',
+  `every` float NOT NULL DEFAULT '5',
+  `description` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `alarm_sensors_ibfk_1` (`device_location_id`),
+  KEY `alarm_sensors_ibfk_2` (`client_id`),
+  CONSTRAINT `alarm_sensors_ibfk_1` FOREIGN KEY (`device_location_id`) REFERENCES `device_locations` (`id`),
+  CONSTRAINT `alarm_sensors_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `alarm_sensors`
+--
+
+LOCK TABLES `alarm_sensors` WRITE;
+-- /*!40000 ALTER TABLE `alarm_sensors` DISABLE KEYS */;
+-- /*!40000 ALTER TABLE `alarm_sensors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `count`
+--
+
+DROP TABLE IF EXISTS `count`;
+-- /*!40101 SET @saved_cs_client     = @@character_set_client */;
+-- /*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `count` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `number` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `count`
+--
+
+LOCK TABLES `count` WRITE;
+-- /*!40000 ALTER TABLE `count` DISABLE KEYS */;
+
+INSERT INTO `count` VALUES (1,0),(2,1),(3,2),(4,3),(5,4),(6,5),(7,6),(8,7),(9,8),(10,9),(11,10);
+
+-- /*!40000 ALTER TABLE `count` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'db-teg-test1'

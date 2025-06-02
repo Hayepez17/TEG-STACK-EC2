@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
+  "id": 6,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -319,46 +319,6 @@
             "width": 10
           },
           {
-            "fieldName": "warn",
-            "id": "warning",
-            "labelWidth": 10,
-            "section": "section2",
-            "title": "Warning",
-            "tooltip": "",
-            "type": "number",
-            "uid": "5180d994-3e38-493c-9ab2-2c7ed953107a",
-            "unit": "",
-            "value": 0,
-            "width": 10
-          },
-          {
-            "fieldName": "crit",
-            "id": "critical",
-            "labelWidth": 10,
-            "section": "section2",
-            "title": "Critical",
-            "tooltip": "",
-            "type": "number",
-            "uid": "7fed9824-b6eb-4bb0-8573-810663422407",
-            "unit": "",
-            "value": 0,
-            "width": 10
-          },
-          {
-            "fieldName": "notify",
-            "id": "notify_every",
-            "max": 60,
-            "min": 5,
-            "section": "",
-            "title": "T Notify",
-            "tooltip": "time that must elapse between unconfirmed alarm notifications",
-            "type": "number",
-            "uid": "1f2343cf-7188-4426-adf6-94099430256f",
-            "unit": "Min",
-            "value": 0,
-            "width": 10
-          },
-          {
             "disableIf": "",
             "fieldName": "offset",
             "id": "offset",
@@ -422,14 +382,6 @@
               "fields": [
                 {
                   "config": {},
-                  "name": "notify",
-                  "type": "number",
-                  "values": [
-                    15
-                  ]
-                },
-                {
-                  "config": {},
                   "name": "min",
                   "type": "number",
                   "values": [
@@ -442,22 +394,6 @@
                   "type": "string",
                   "values": [
                     "100"
-                  ]
-                },
-                {
-                  "config": {},
-                  "name": "warn",
-                  "type": "number",
-                  "values": [
-                    85
-                  ]
-                },
-                {
-                  "config": {},
-                  "name": "crit",
-                  "type": "number",
-                  "values": [
-                    95
                   ]
                 },
                 {
@@ -714,7 +650,7 @@
             "editorMode": "code",
             "format": "table",
             "rawQuery": true,
-            "rawSql": "INSERT INTO\r\n  `db-teg-test1`.device_locations (\r\n    device_id,\r\n    client_id,\r\n    location_id,\r\n    variable_id,\r\n    sensor_id,\r\n    notify_every,\r\n    min,\r\n    max,\r\n    warning,\r\n    critical,\r\n    offset,\r\n    calibration_factor,\r\n    status\r\n  )\r\nVALUES\r\n  (\r\n    ${payload.device_id},\r\n    ${_client_id},\r\n    ${payload.location_id},\r\n    ${payload.variable_id},\r\n    ${payload.sensor_id},\r\n    ${payload.notify_every},\r\n    ${payload.min},\r\n    ${payload.max},\r\n    ${payload.warning},\r\n    ${payload.critical},\r\n    ${payload.offset},\r\n    ${payload.calibration_factor},\r\n    ${payload.status}\r\n  )",
+            "rawSql": "INSERT INTO\r\n  `db-teg-test1`.device_locations (\r\n    device_id,\r\n    client_id,\r\n    location_id,\r\n    variable_id,\r\n    sensor_id,\r\n    min,\r\n    max,\r\n    offset,\r\n    calibration_factor,\r\n    status\r\n  )\r\nVALUES\r\n  (\r\n    ${payload.device_id},\r\n    ${_client_id},\r\n    ${payload.location_id},\r\n    ${payload.variable_id},\r\n    ${payload.sensor_id},\r\n    ${payload.min},\r\n    ${payload.max},\r\n    ${payload.offset},\r\n    ${payload.calibration_factor},\r\n    ${payload.status}\r\n  )",
             "refId": "A",
             "sql": {
               "columns": [
@@ -1371,76 +1307,6 @@
                 },
                 "enabled": true,
                 "field": {
-                  "name": "notify_every",
-                  "source": "A"
-                },
-                "fileCell": {
-                  "size": "md",
-                  "text": "Download",
-                  "variant": "primary"
-                },
-                "filter": {
-                  "enabled": false,
-                  "mode": "client",
-                  "variable": ""
-                },
-                "footer": [],
-                "gauge": {
-                  "mode": "basic",
-                  "valueDisplayMode": "text",
-                  "valueSize": 14
-                },
-                "group": false,
-                "label": "",
-                "newRowEdit": {
-                  "editor": {
-                    "type": "string"
-                  },
-                  "enabled": false
-                },
-                "objectId": "",
-                "pin": "",
-                "preformattedStyle": false,
-                "scale": "auto",
-                "showingRows": 20,
-                "sort": {
-                  "descFirst": false,
-                  "enabled": false
-                },
-                "type": "auto"
-              },
-              {
-                "aggregation": "none",
-                "appearance": {
-                  "alignment": "start",
-                  "background": {
-                    "applyToRow": false
-                  },
-                  "colors": {},
-                  "header": {
-                    "fontSize": "md"
-                  },
-                  "width": {
-                    "auto": true,
-                    "max": 50,
-                    "min": 20,
-                    "value": 100
-                  },
-                  "wrap": true
-                },
-                "columnTooltip": "",
-                "edit": {
-                  "editor": {
-                    "type": "number"
-                  },
-                  "enabled": true,
-                  "permission": {
-                    "mode": "",
-                    "userRole": []
-                  }
-                },
-                "enabled": true,
-                "field": {
                   "name": "min",
                   "source": "A"
                 },
@@ -1512,146 +1378,6 @@
                 "enabled": true,
                 "field": {
                   "name": "max",
-                  "source": "A"
-                },
-                "fileCell": {
-                  "size": "md",
-                  "text": "Download",
-                  "variant": "primary"
-                },
-                "filter": {
-                  "enabled": false,
-                  "mode": "client",
-                  "variable": ""
-                },
-                "footer": [],
-                "gauge": {
-                  "mode": "basic",
-                  "valueDisplayMode": "text",
-                  "valueSize": 14
-                },
-                "group": false,
-                "label": "",
-                "newRowEdit": {
-                  "editor": {
-                    "type": "string"
-                  },
-                  "enabled": false
-                },
-                "objectId": "",
-                "pin": "",
-                "preformattedStyle": false,
-                "scale": "auto",
-                "showingRows": 20,
-                "sort": {
-                  "descFirst": false,
-                  "enabled": false
-                },
-                "type": "auto"
-              },
-              {
-                "aggregation": "none",
-                "appearance": {
-                  "alignment": "start",
-                  "background": {
-                    "applyToRow": false
-                  },
-                  "colors": {},
-                  "header": {
-                    "fontSize": "md"
-                  },
-                  "width": {
-                    "auto": true,
-                    "max": 50,
-                    "min": 20,
-                    "value": 100
-                  },
-                  "wrap": true
-                },
-                "columnTooltip": "",
-                "edit": {
-                  "editor": {
-                    "type": "number"
-                  },
-                  "enabled": true,
-                  "permission": {
-                    "mode": "",
-                    "userRole": []
-                  }
-                },
-                "enabled": true,
-                "field": {
-                  "name": "warning",
-                  "source": "A"
-                },
-                "fileCell": {
-                  "size": "md",
-                  "text": "Download",
-                  "variant": "primary"
-                },
-                "filter": {
-                  "enabled": false,
-                  "mode": "client",
-                  "variable": ""
-                },
-                "footer": [],
-                "gauge": {
-                  "mode": "basic",
-                  "valueDisplayMode": "text",
-                  "valueSize": 14
-                },
-                "group": false,
-                "label": "",
-                "newRowEdit": {
-                  "editor": {
-                    "type": "string"
-                  },
-                  "enabled": false
-                },
-                "objectId": "",
-                "pin": "",
-                "preformattedStyle": false,
-                "scale": "auto",
-                "showingRows": 20,
-                "sort": {
-                  "descFirst": false,
-                  "enabled": false
-                },
-                "type": "auto"
-              },
-              {
-                "aggregation": "none",
-                "appearance": {
-                  "alignment": "start",
-                  "background": {
-                    "applyToRow": false
-                  },
-                  "colors": {},
-                  "header": {
-                    "fontSize": "md"
-                  },
-                  "width": {
-                    "auto": true,
-                    "max": 50,
-                    "min": 20,
-                    "value": 100
-                  },
-                  "wrap": true
-                },
-                "columnTooltip": "",
-                "edit": {
-                  "editor": {
-                    "type": "number"
-                  },
-                  "enabled": true,
-                  "permission": {
-                    "mode": "",
-                    "userRole": []
-                  }
-                },
-                "enabled": true,
-                "field": {
-                  "name": "critical",
                   "source": "A"
                 },
                 "fileCell": {
@@ -1903,7 +1629,7 @@
             "name": "device_locations",
             "pagination": {
               "defaultPageSize": 10,
-              "enabled": false,
+              "enabled": true,
               "mode": "client"
             },
             "rowHighlight": {
@@ -1922,7 +1648,7 @@
                 "editorMode": "code",
                 "format": "table",
                 "rawQuery": true,
-                "rawSql": "UPDATE `db-teg-test1`.device_locations\r\nSET \r\n    device_id = '${payload.mac_address}',\r\n    client_id = '${_client_id}',\r\n    location_id = '${payload.location_id}',\r\n    variable_id = '${payload.variable_id}',\r\n    sensor_id = '${payload.sensor_id}',\r\n    notify_every = '${payload.notify_every}',\r\n    min = '${payload.min}',\r\n    max = '${payload.max}',\r\n    warning = '${payload.warning}',\r\n    critical = '${payload.critical}',\r\n    offset = '${payload.offset}',\r\n    calibration_factor = '${payload.calibration_factor}',\r\n    status = case when '${payload.status}' = 'true' then 1 else 0 end\r\nWHERE id = '${payload.id}';\r\n",
+                "rawSql": "UPDATE `db-teg-test1`.device_locations\r\nSET \r\n    device_id = '${payload.mac_address}',\r\n    client_id = '${_client_id}',\r\n    location_id = '${payload.location_id}',\r\n    variable_id = '${payload.variable_id}',\r\n    sensor_id = '${payload.sensor_id}',\r\n    min = '${payload.min}',\r\n    max = '${payload.max}',\r\n    offset = '${payload.offset}',\r\n    calibration_factor = '${payload.calibration_factor}',\r\n    status = case when '${payload.status}' = 'true' then 1 else 0 end\r\nWHERE id = '${payload.id}';\r\n",
                 "refId": "A",
                 "sql": {
                   "columns": [
@@ -1960,7 +1686,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\n  dl.id,\n  d.mac_address device_id,\n  CONCAT_WS('@', s.name, s.serial) sensor_id,\n  l.name location_id,\n  v.name variable_id,\n  dl.notify_every,\n  dl.min,\n  dl.max,\n  dl.warning,\n  dl.critical,\n  dl.offset,\n  dl.calibration_factor,\n  dl.status\nFROM\n  `db-teg-test1`.device_locations dl\n  INNER JOIN `db-teg-test1`.variables v ON dl.variable_id = v.id\n  INNER JOIN `db-teg-test1`.devices d ON d.id = dl.device_id\n  INNER JOIN `db-teg-test1`.locations l ON dl.location_id = l.id\n  AND d.client_id = l.client_id\n  INNER JOIN `db-teg-test1`.clients c ON dl.client_id = c.id\n  INNER JOIN `db-teg-test1`.sensors s ON dl.sensor_id = s.id\nwhere\n  c.name = '$_client'\n  order by dl.id;",
+          "rawSql": "SELECT\n  dl.id,\n  d.mac_address device_id,\n  CONCAT_WS('@', s.name, s.serial) sensor_id,\n  l.name location_id,\n  v.name variable_id,\n  dl.min,\n  dl.max,\n  dl.offset,\n  dl.calibration_factor,\n  dl.status\nFROM\n  `db-teg-test1`.device_locations dl\n  INNER JOIN `db-teg-test1`.variables v ON dl.variable_id = v.id\n  INNER JOIN `db-teg-test1`.devices d ON d.id = dl.device_id\n  INNER JOIN `db-teg-test1`.locations l ON dl.location_id = l.id\n  AND d.client_id = l.client_id\n  INNER JOIN `db-teg-test1`.clients c ON dl.client_id = c.id\n  INNER JOIN `db-teg-test1`.sensors s ON dl.sensor_id = s.id\nwhere\n  c.name = '$_client'\n  order by dl.id;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -2134,7 +1860,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Device Locations",
           "value": "d3f55778-92a4-4b02-b885-ec56e04b6e41"
         },

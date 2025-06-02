@@ -18,10 +18,138 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 9,
+  "id": 8,
   "links": [],
   "liveNow": false,
   "panels": [
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 0
+      },
+      "id": 16,
+      "options": {
+        "autoPlay": true,
+        "autoPlayInfinity": false,
+        "buttons": [],
+        "controls": true,
+        "height": 0,
+        "heightMode": "auto",
+        "infinityPlay": false,
+        "mediaSources": [
+          {
+            "field": "image",
+            "id": "b8a9527c-3b3b-4bce-8c2d-32f17033fd30",
+            "refId": "A",
+            "type": "image"
+          }
+        ],
+        "noResultsMessage": "Nothing to display...",
+        "pdfToolbar": true,
+        "scale": "auto",
+        "toolbar": false,
+        "width": 0,
+        "widthMode": "auto",
+        "zoomType": "default"
+      },
+      "pluginVersion": "6.1.0",
+      "targets": [
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n  -- SUBSTRING_INDEX(image, ',', -1) image\r\n  image\r\nFROM `db-teg-test1`.clients WHERE id = $_client_id; ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "type": "volkovlabs-image-panel"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 3,
+        "y": 0
+      },
+      "id": 30,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto"
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "return {\n  series: [\n    {\n      name: 'hour',\n      type: 'gauge',\n      startAngle: 90,\n      endAngle: -270,\n      min: 0,\n      max: 12,\n      splitNumber: 12,\n      clockwise: true,\n      axisLine: {\n        lineStyle: {\n          width: 1,\n          color: [[1, 'rgba(0,0,0,0.7)']],\n          shadowColor: 'rgba(0, 0, 0, 0.5)',\n          shadowBlur: 15\n        }\n      },\n      splitLine: {\n        lineStyle: {\n          shadowColor: 'rgba(0, 0, 0, 0.3)',\n          shadowBlur: 3,\n          shadowOffsetX: 1,\n          shadowOffsetY: 2\n        }\n      },\n      axisLabel: {\n        fontSize: 10,\n        distance: 2,\n        formatter: function (value) {\n          if (value === 0) {\n            return '';\n          }\n          return value + '';\n        }\n      },\n      anchor: {\n        show: true,\n        icon: 'path://M532.8,70.8C532.8,70.8,532.8,70.8,532.8,70.8L532.8,70.8C532.7,70.8,532.8,70.8,532.8,70.8z M456.1,49.6c-2.2-6.2-8.1-10.6-15-10.6h-37.5v10.6h37.5l0,0c2.9,0,5.3,2.4,5.3,5.3c0,2.9-2.4,5.3-5.3,5.3v0h-22.5c-1.5,0.1-3,0.4-4.3,0.9c-4.5,1.6-8.1,5.2-9.7,9.8c-0.6,1.7-0.9,3.4-0.9,5.3v16h10.6v-16l0,0l0,0c0-2.7,2.1-5,4.7-5.3h10.3l10.4,21.2h11.8l-10.4-21.2h0c6.9,0,12.8-4.4,15-10.6c0.6-1.7,0.9-3.5,0.9-5.3C457,53,456.7,51.2,456.1,49.6z M388.9,92.1h11.3L381,39h-3.6h-11.3L346.8,92v0h11.3l3.9-10.7h7.3h7.7l3.9-10.6h-7.7h-7.3l7.7-21.2v0L388.9,92.1z M301,38.9h-10.6v53.1H301V70.8h28.4l3.7-10.6H301V38.9zM333.2,38.9v10.6v10.7v31.9h10.6V38.9H333.2z M249.5,81.4L249.5,81.4L249.5,81.4c-2.9,0-5.3-2.4-5.3-5.3h0V54.9h0l0,0c0-2.9,2.4-5.3,5.3-5.3l0,0l0,0h33.6l3.9-10.6h-37.5c-1.9,0-3.6,0.3-5.3,0.9c-4.5,1.6-8.1,5.2-9.7,9.7c-0.6,1.7-0.9,3.5-0.9,5.3l0,0v21.3c0,1.9,0.3,3.6,0.9,5.3c1.6,4.5,5.2,8.1,9.7,9.7c1.7,0.6,3.5,0.9,5.3,0.9h33.6l3.9-10.6H249.5z M176.8,38.9v10.6h49.6l3.9-10.6H176.8z M192.7,81.4L192.7,81.4L192.7,81.4c-2.9,0-5.3-2.4-5.3-5.3l0,0v-5.3h38.9l3.9-10.6h-53.4v10.6v5.3l0,0c0,1.9,0.3,3.6,0.9,5.3c1.6,4.5,5.2,8.1,9.7,9.7c1.7,0.6,3.4,0.9,5.3,0.9h23.4h10.2l3.9-10.6l0,0H192.7z M460.1,38.9v10.6h21.4v42.5h10.6V49.6h17.5l3.8-10.6H460.1z M541.6,68.2c-0.2,0.1-0.4,0.3-0.7,0.4C541.1,68.4,541.4,68.3,541.6,68.2L541.6,68.2z M554.3,60.2h-21.6v0l0,0c-2.9,0-5.3-2.4-5.3-5.3c0-2.9,2.4-5.3,5.3-5.3l0,0l0,0h33.6l3.8-10.6h-37.5l0,0c-6.9,0-12.8,4.4-15,10.6c-0.6,1.7-0.9,3.5-0.9,5.3c0,1.9,0.3,3.7,0.9,5.3c2.2,6.2,8.1,10.6,15,10.6h21.6l0,0c2.9,0,5.3,2.4,5.3,5.3c0,2.9-2.4,5.3-5.3,5.3l0,0h-37.5v10.6h37.5c6.9,0,12.8-4.4,15-10.6c0.6-1.7,0.9-3.5,0.9-5.3c0-1.9-0.3-3.7-0.9-5.3C567.2,64.6,561.3,60.2,554.3,60.2z',\n        showAbove: false,\n        offsetCenter: [0, '-35%'],\n        size: 30,\n        keepAspect: true,\n        itemStyle: {\n          color: '#707177'\n        }\n      },\n      pointer: {\n        icon: 'path://M2.9,0.7L2.9,0.7c1.4,0,2.6,1.2,2.6,2.6v115c0,1.4-1.2,2.6-2.6,2.6l0,0c-1.4,0-2.6-1.2-2.6-2.6V3.3C0.3,1.9,1.4,0.7,2.9,0.7z',\n        width: 12,\n        length: '55%',\n        offsetCenter: [0, '8%'],\n        itemStyle: {\n          color: '#C0911F',\n          shadowColor: 'rgba(0, 0, 0, 0.3)',\n          shadowBlur: 8,\n          shadowOffsetX: 2,\n          shadowOffsetY: 4\n        }\n      },\n      detail: {\n        show: false\n      },\n      title: {\n        offsetCenter: [0, '30%']\n      },\n      data: [\n        {\n          value: 0\n        }\n      ]\n    },\n    {\n      name: 'minute',\n      type: 'gauge',\n      startAngle: 90,\n      endAngle: -270,\n      min: 0,\n      max: 60,\n      clockwise: true,\n      axisLine: {\n        show: false\n      },\n      splitLine: {\n        show: false\n      },\n      axisTick: {\n        show: false\n      },\n      axisLabel: {\n        show: false\n      },\n      pointer: {\n        icon: 'path://M2.9,0.7L2.9,0.7c1.4,0,2.6,1.2,2.6,2.6v115c0,1.4-1.2,2.6-2.6,2.6l0,0c-1.4,0-2.6-1.2-2.6-2.6V3.3C0.3,1.9,1.4,0.7,2.9,0.7z',\n        width: 8,\n        length: '70%',\n        offsetCenter: [0, '8%'],\n        itemStyle: {\n          color: '#C0911F',\n          shadowColor: 'rgba(0, 0, 0, 0.3)',\n          shadowBlur: 8,\n          shadowOffsetX: 2,\n          shadowOffsetY: 4\n        }\n      },\n      anchor: {\n        show: true,\n        size: 20,\n        showAbove: false,\n        itemStyle: {\n          borderWidth: 15,\n          borderColor: '#C0911F',\n          shadowColor: 'rgba(0, 0, 0, 0.3)',\n          shadowBlur: 8,\n          shadowOffsetX: 2,\n          shadowOffsetY: 4\n        }\n      },\n      detail: {\n        show: false\n      },\n      title: {\n        offsetCenter: ['0%', '-40%']\n      },\n      data: [\n        {\n          value: 0\n        }\n      ]\n    },\n    {\n      name: 'second',\n      type: 'gauge',\n      startAngle: 90,\n      endAngle: -270,\n      min: 0,\n      max: 60,\n      animationEasingUpdate: 'bounceOut',\n      clockwise: true,\n      axisLine: {\n        show: false\n      },\n      splitLine: {\n        show: false\n      },\n      axisTick: {\n        show: false\n      },\n      axisLabel: {\n        show: false\n      },\n      pointer: {\n        icon: 'path://M2.9,0.7L2.9,0.7c1.4,0,2.6,1.2,2.6,2.6v115c0,1.4-1.2,2.6-2.6,2.6l0,0c-1.4,0-2.6-1.2-2.6-2.6V3.3C0.3,1.9,1.4,0.7,2.9,0.7z',\n        width: 4,\n        length: '85%',\n        offsetCenter: [0, '8%'],\n        itemStyle: {\n          color: '#C0911F',\n          shadowColor: 'rgba(0, 0, 0, 0.3)',\n          shadowBlur: 8,\n          shadowOffsetX: 2,\n          shadowOffsetY: 4\n        }\n      },\n      anchor: {\n        show: true,\n        size: 15,\n        showAbove: true,\n        itemStyle: {\n          color: '#C0911F',\n          shadowColor: 'rgba(0, 0, 0, 0.3)',\n          shadowBlur: 8,\n          shadowOffsetX: 2,\n          shadowOffsetY: 4\n        }\n      },\n      detail: {\n        show: false\n      },\n      title: {\n        offsetCenter: ['0%', '-40%']\n      },\n      data: [\n        {\n          value: 0\n        }\n      ]\n    }\n  ]\n};\nsetInterval(function () {\n  var date = new Date();\n  var second = date.getSeconds();\n  var minute = date.getMinutes() + second / 60;\n  var hour = (date.getHours() % 12) + minute / 60;\n  option.animationDurationUpdate = 300;\n  myChart.setOption({\n    series: [\n      {\n        name: 'hour',\n        animation: hour !== 0,\n        data: [{ value: hour }]\n      },\n      {\n        name: 'minute',\n        animation: minute !== 0,\n        data: [{ value: minute }]\n      },\n      {\n        animation: second !== 0,\n        name: 'second',\n        data: [{ value: second }]\n      }\n    ]\n  });\n}, 1000);",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "return {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "6.5.0",
+      "targets": [
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "type": "volkovlabs-echarts-panel"
+    },
     {
       "datasource": {
         "type": "marcusolsson-static-datasource",
@@ -52,9 +180,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
+        "h": 4,
+        "w": 18,
+        "x": 6,
         "y": 0
       },
       "id": 1,
@@ -66,7 +194,7 @@
         "collapsedByDefault": false,
         "customValue": false,
         "dashboardVariable": "_panel",
-        "displayMode": "table",
+        "displayMode": "button",
         "emptyValue": false,
         "favorites": {
           "enabled": false,
@@ -102,8 +230,325 @@
           "refId": "A"
         }
       ],
-      "title": "Menu",
       "type": "volkovlabs-variable-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "thresholdsStyle": {
+              "mode": "color",
+              "thresholds": []
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "id": 2,
+      "options": {
+        "alertCustomMessage": "",
+        "alwaysVisibleFilter": false,
+        "autoScroll": false,
+        "browserTabNamePattern": "",
+        "collapsedByDefault": false,
+        "customValue": false,
+        "displayMode": "minimize",
+        "emptyValue": false,
+        "favorites": {
+          "enabled": false,
+          "storage": "browser"
+        },
+        "filter": false,
+        "groupSelection": false,
+        "header": true,
+        "isMinimizeForTable": false,
+        "isUseLocalTime": false,
+        "minimizeOutputFormat": "text",
+        "padding": 10,
+        "persistent": false,
+        "saveSelectedGroup": false,
+        "saveSelectedGroupKey": "",
+        "showGroupTotal": false,
+        "showLabel": false,
+        "showName": false,
+        "showResetButton": false,
+        "showTotal": false,
+        "statusSort": false,
+        "sticky": false,
+        "tabsInOrder": true,
+        "variable": "_client"
+      },
+      "pluginVersion": "3.9.0",
+      "title": "Client",
+      "type": "volkovlabs-variable-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "thresholdsStyle": {
+              "mode": "color",
+              "thresholds": []
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "id": 3,
+      "options": {
+        "alertCustomMessage": "",
+        "alwaysVisibleFilter": false,
+        "autoScroll": false,
+        "browserTabNamePattern": "",
+        "collapsedByDefault": false,
+        "customValue": false,
+        "displayMode": "minimize",
+        "emptyValue": false,
+        "favorites": {
+          "enabled": false,
+          "storage": "browser"
+        },
+        "filter": false,
+        "groupSelection": false,
+        "header": false,
+        "isMinimizeForTable": false,
+        "isUseLocalTime": false,
+        "minimizeOutputFormat": "text",
+        "padding": 10,
+        "persistent": false,
+        "saveSelectedGroup": false,
+        "saveSelectedGroupKey": "",
+        "showGroupTotal": false,
+        "showLabel": false,
+        "showName": false,
+        "showResetButton": false,
+        "showTotal": false,
+        "statusSort": false,
+        "sticky": false,
+        "tabsInOrder": true,
+        "variable": "_variable"
+      },
+      "pluginVersion": "3.9.0",
+      "title": "Variables",
+      "type": "volkovlabs-variable-panel"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 10,
+      "panels": [],
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 0,
+        "y": 8
+      },
+      "id": 4,
+      "maxPerRow": 3,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto",
+        "text": {}
+      },
+      "pluginVersion": "10.3.1",
+      "repeat": "_device_locations",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT location_name name, unit, value, timestamp FROM `db-teg-test1`.metrics where client_name = '$_client' and variable_name in (${_variable:singlequote}) and device_location_id in (${_device_locations:singlequote}) ORDER BY timestamp DESC LIMIT 1;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "type": "gauge"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 22,
+      "panels": [],
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "id": 29,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto"
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "// This example requires ECharts v5.4.0 or later\nconst cellSize = [80, 80];\nconst pieRadius = 30;\nfunction getVirtualData() {\n  const date = +context.echarts.time.parse('2017-02-01');\n  const end = +context.echarts.time.parse('2017-03-01');\n  const dayTime = 3600 * 24 * 1000;\n  const data = [];\n  for (let time = date; time < end; time += dayTime) {\n    data.push([\n      context.echarts.time.format(time, '{yyyy}-{MM}-{dd}', false),\n      Math.floor(Math.random() * 10000)\n    ]);\n  }\n  return data;\n}\n\nconst scatterData = getVirtualData();\nconst pieSeries = scatterData.map(function (item, index) {\n  return {\n    type: 'pie',\n    id: 'pie-' + index,\n    center: item[0],\n    radius: pieRadius,\n    coordinateSystem: 'calendar',\n    label: {\n      formatter: '{c}',\n      position: 'inside'\n    },\n    data: [\n      { name: 'Work', value: Math.round(Math.random() * 24) },\n      { name: 'Entertainment', value: Math.round(Math.random() * 24) },\n      { name: 'Sleep', value: Math.round(Math.random() * 24) }\n    ]\n  };\n});\n\nreturn {\n  tooltip: {},\n  legend: {\n    data: ['Work', 'Entertainment', 'Sleep'],\n    bottom: 20\n  },\n  calendar: {\n    top: '2%',\n    left: '2%',\n    bottom: 40,\n    right: '2%',\n    orient: 'vertical',\n    cellSize: cellSize,\n    yearLabel: {\n      show: false,\n      fontSize: 30\n    },\n    dayLabel: {\n      margin: 20,\n      firstDay: 1,\n      nameMap: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']\n    },\n    monthLabel: {\n      show: false\n    },\n    range: ['2017-02']\n  },\n  series: [\n    {\n      id: 'label',\n      type: 'scatter',\n      coordinateSystem: 'calendar',\n      symbolSize: 0,\n      label: {\n        show: true,\n        formatter: function (params) {\n          return context.echarts.time.format(params.value[0], '{dd}', false);\n        },\n        offset: [-cellSize[0] / 2 + 10, -cellSize[1] / 2 + 10],\n        fontSize: 14\n      },\n      data: scatterData\n    },\n    ...pieSeries\n  ]\n};",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "return {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "6.5.0",
+      "targets": [
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Panel Title",
+      "type": "volkovlabs-echarts-panel"
     }
   ],
   "refresh": "",
@@ -113,7 +558,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Dashboard",
           "value": "dadcde76-fafe-4e62-81c2-569dc8a101c3"
         },
@@ -146,6 +591,103 @@
         "query": "Dashboard : dadcde76-fafe-4e62-81c2-569dc8a101c3, Device Locations : d3f55778-92a4-4b02-b885-ec56e04b6e41, Settings : dc32e257-3a80-44c6-b04e-8dcddbe61430,  Report : f75e42aa-b555-4d29-b2f7-817968f7264a",
         "skipUrlSync": false,
         "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Iambox",
+          "value": "Iambox"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select name from `db-teg-test1`.clients;",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "_client",
+        "options": [],
+        "query": "select name from `db-teg-test1`.clients;",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "3",
+          "value": "3"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select id from `db-teg-test1`.clients where name = '$_client';",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "_client_id",
+        "options": [],
+        "query": "select id from `db-teg-test1`.clients where name = '$_client';",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {
+          "selected": false,
+          "text": "Temperature",
+          "value": "Temperature"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select v.name from `db-teg-test1`.device_locations dl  inner join  `db-teg-test1`.variables v on v.id =\ndl.variable_id where dl.client_id = '$_client_id' and dl.status != 0 group by v.name;",
+        "hide": 2,
+        "includeAll": true,
+        "multi": true,
+        "name": "_variable",
+        "options": [],
+        "query": "select v.name from `db-teg-test1`.device_locations dl  inner join  `db-teg-test1`.variables v on v.id =\ndl.variable_id where dl.client_id = '$_client_id' and dl.status != 0 group by v.name;",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select dl.id from `db-teg-test1`.device_locations dl \ninner join `db-teg-test1`.variables v on v.id = dl.variable_id\ninner join `db-teg-test1`.clients c on c.id = dl.client_id\nwhere v.name in (${_variable:singlequote}) and c.id = '$_client_id' and dl.status != 0;",
+        "hide": 2,
+        "includeAll": true,
+        "multi": true,
+        "name": "_device_locations",
+        "options": [],
+        "query": "select dl.id from `db-teg-test1`.device_locations dl \ninner join `db-teg-test1`.variables v on v.id = dl.variable_id\ninner join `db-teg-test1`.clients c on c.id = dl.client_id\nwhere v.name in (${_variable:singlequote}) and c.id = '$_client_id' and dl.status != 0;",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -157,6 +699,6 @@
   "timezone": "",
   "title": "Client Dashboard",
   "uid": "dadcde76-fafe-4e62-81c2-569dc8a101c3",
-  "version": 2,
+  "version": 9,
   "weekStart": ""
 }
