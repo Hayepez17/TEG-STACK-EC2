@@ -362,6 +362,21 @@ LOCK TABLES `alarm_sensors` WRITE;
 -- /*!40000 ALTER TABLE `alarm_sensors` ENABLE KEYS */;
 UNLOCK TABLES;
 
+CREATE TABLE `reports` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `client_id` bigint NOT NULL,
+  `uuid` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `template` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `api_token` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `every` int NOT NULL DEFAULT '1',
+  `status` tinyint NOT NULL DEFAULT '1',
+  `date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `reports_ibfk_1` (`client_id`),
+  CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Table structure for table `count`
 --

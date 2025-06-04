@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": 7,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -65,7 +65,7 @@
         "browserTabNamePattern": "",
         "collapsedByDefault": false,
         "customValue": false,
-        "dashboardVariable": "_panel",
+        "dashboardVariable": "getUID",
         "displayMode": "table",
         "emptyValue": false,
         "favorites": {
@@ -90,7 +90,7 @@
         "statusSort": false,
         "sticky": false,
         "tabsInOrder": true,
-        "variable": "_panel"
+        "variable": "getPannels"
       },
       "pluginVersion": "3.9.0",
       "title": "Menu",
@@ -1861,42 +1861,6 @@
       {
         "current": {
           "selected": false,
-          "text": "Device Locations",
-          "value": "d3f55778-92a4-4b02-b885-ec56e04b6e41"
-        },
-        "hide": 2,
-        "includeAll": false,
-        "multi": false,
-        "name": "_panel",
-        "options": [
-          {
-            "selected": false,
-            "text": "Dashboard",
-            "value": "dadcde76-fafe-4e62-81c2-569dc8a101c3"
-          },
-          {
-            "selected": true,
-            "text": "Device Locations",
-            "value": "d3f55778-92a4-4b02-b885-ec56e04b6e41"
-          },
-          {
-            "selected": false,
-            "text": "Settings",
-            "value": "dc32e257-3a80-44c6-b04e-8dcddbe61430"
-          },
-          {
-            "selected": false,
-            "text": "Report",
-            "value": "O4tc_E6Gz"
-          }
-        ],
-        "query": "Dashboard : dadcde76-fafe-4e62-81c2-569dc8a101c3, Device Locations : d3f55778-92a4-4b02-b885-ec56e04b6e41, Settings : dc32e257-3a80-44c6-b04e-8dcddbe61430,  Report : O4tc_E6Gz",
-        "skipUrlSync": false,
-        "type": "custom"
-      },
-      {
-        "current": {
-          "selected": false,
           "text": "3",
           "value": "3"
         },
@@ -1916,6 +1880,52 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Device Locations",
+          "value": "Device Locations"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "SELECT 'Dashboard' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 5 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'General Settings' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 1 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Device Locations' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 2 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Reports' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 2 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Alarms' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 3 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost');\n",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "getPannels",
+        "options": [],
+        "query": "SELECT 'Dashboard' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 5 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'General Settings' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 1 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Device Locations' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 2 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Reports' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 2 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Alarms' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 3 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost');\n",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "d3f55778-92a4-4b02-b885-ec56e04b6e41",
+          "value": "d3f55778-92a4-4b02-b885-ec56e04b6e41"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select case\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = 'Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE '${__user.email}' = 'admin@localhost' \n  OR email = '${__user.email}';",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "getUID",
+        "options": [],
+        "query": "select case\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = 'Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE '${__user.email}' = 'admin@localhost' \n  OR email = '${__user.email}';",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -1929,6 +1939,6 @@
   "timezone": "",
   "title": "Device Setings",
   "uid": "d3f55778-92a4-4b02-b885-ec56e04b6e41",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }

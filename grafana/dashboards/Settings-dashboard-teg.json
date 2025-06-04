@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": 9,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -65,7 +65,7 @@
         "browserTabNamePattern": "",
         "collapsedByDefault": false,
         "customValue": false,
-        "dashboardVariable": "_panel",
+        "dashboardVariable": "getUID",
         "displayMode": "table",
         "emptyValue": false,
         "favorites": {
@@ -90,7 +90,7 @@
         "statusSort": false,
         "sticky": false,
         "tabsInOrder": true,
-        "variable": "_panel"
+        "variable": "getPannels"
       },
       "pluginVersion": "3.9.0",
       "title": "Menu",
@@ -1814,7 +1814,7 @@
                   "editorMode": "code",
                   "format": "table",
                   "rawQuery": true,
-                  "rawSql": "INSERT INTO\r\n  `db-teg-test1`.users (name, client_id, email, phone, enable_notifications, status)\r\nvalues\r\n  (\r\n    '${payload.name}',\r\n    '${payload.client_name}',\r\n    '${payload.email}',\r\n    '${payload.phone}',\r\n    '${payload.enable_notifications}',\r\n    CASE\r\n      WHEN '${payload.status}' = 'true' THEN 1\r\n      ELSE 0\r\n    END\r\n  );",
+                  "rawSql": "INSERT INTO\r\n  `db-teg-test1`.users (name, client_id, email, phone, enable_notifications, role, status)\r\nvalues\r\n  (\r\n    '${payload.name}',\r\n    '${payload.client_name}',\r\n    '${payload.email}',\r\n    '${payload.phone}',\r\n    '${payload.notify}',\r\n    '${payload.role_name}',\r\n    CASE\r\n      WHEN '${payload.status}' = 'true' THEN 1\r\n      ELSE 0\r\n    END\r\n  );",
                   "refId": "A",
                   "sql": {
                     "columns": [
@@ -2302,7 +2302,7 @@
               {
                 "aggregation": "none",
                 "appearance": {
-                  "alignment": "center",
+                  "alignment": "start",
                   "background": {
                     "applyToRow": false
                   },
@@ -2312,18 +2312,20 @@
                   },
                   "width": {
                     "auto": true,
-                    "max": 80,
                     "min": 20,
                     "value": 100
                   },
                   "wrap": true
                 },
-                "columnTooltip": "Notifications enabled for Telegram, MSM, Email",
+                "columnTooltip": "",
                 "edit": {
                   "editor": {
-                    "max": 8,
-                    "min": 0,
-                    "type": "number"
+                    "queryOptions": {
+                      "label": "notify_name",
+                      "source": "enum_user1",
+                      "value": "number"
+                    },
+                    "type": "select"
                   },
                   "enabled": true,
                   "permission": {
@@ -2333,7 +2335,7 @@
                 },
                 "enabled": true,
                 "field": {
-                  "name": "enable_notifications",
+                  "name": "notify",
                   "source": "D"
                 },
                 "fileCell": {
@@ -2353,12 +2355,94 @@
                   "valueSize": 14
                 },
                 "group": false,
-                "label": "notify",
+                "label": "",
                 "newRowEdit": {
                   "editor": {
-                    "max": 8,
-                    "min": 0,
-                    "type": "number"
+                    "queryOptions": {
+                      "label": "notify_name",
+                      "source": "enum_user1",
+                      "value": "number"
+                    },
+                    "type": "select"
+                  },
+                  "enabled": true
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "queryOptions": {
+                      "label": "role_name",
+                      "source": "enum_user2",
+                      "value": "id"
+                    },
+                    "type": "select"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "role_name",
+                  "source": "D"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "queryOptions": {
+                      "label": "role_name",
+                      "source": "enum_user2",
+                      "value": "id"
+                    },
+                    "type": "select"
                   },
                   "enabled": true
                 },
@@ -2535,7 +2619,7 @@
                 "editorMode": "code",
                 "format": "table",
                 "rawQuery": true,
-                "rawSql": "UPDATE `db-teg-test1`.users\r\nSET name = '${payload.name}',\r\n    client_id = '${payload.client_name}',\r\n    email = '${payload.email}',\r\n    phone = '${payload.phone}',\r\n    enable_notifications = '${payload.enable_notifications}',\r\n    status = case when '${payload.status}' = 'true' then 1 else 0 end\r\nWHERE id = '${payload.id}';\r\n",
+                "rawSql": "UPDATE `db-teg-test1`.users\r\nSET name = '${payload.name}',\r\n    client_id = '${payload.client_name}',\r\n    email = '${payload.email}',\r\n    phone = '${payload.phone}',\r\n    enable_notifications = '${payload.notify}',\r\n    role = '${payload.role_name}',\r\n    status = case when '${payload.status}' = 'true' then 1 else 0 end\r\nWHERE id = '${payload.id}';\r\n",
                 "refId": "A",
                 "sql": {
                   "columns": [
@@ -3763,7 +3847,7 @@
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "-- SELECT * FROM `db-teg-test1`.users;\r\n\r\nSELECT us.*, c.name AS client_name\r\nFROM `db-teg-test1`.users us\r\nINNER JOIN `db-teg-test1`.clients c\r\nON us.client_id = c.id\r\norder by id;",
+          "rawSql": "-- SELECT * FROM `db-teg-test1`.users;\r\n\r\nSELECT us.*, c.name client_name, case\r\n  when us.enable_notifications = 1 then 'Telegram only'\r\n  when us.enable_notifications = 2 then 'Email only'\r\n  when us.enable_notifications = 3 then 'Telegram & Email'\r\n  else 'None'\r\nend as notify,\r\ncase\r\n  when us.role = 0 then 'Admin'\r\n  when us.role = 1 then 'Operator'\r\n  when us.role = 2 then 'Client Admin'\r\n  when us.role = 3 then 'Client Operator'\r\n  else 'Viewer'\r\nend as role_name\r\nFROM `db-teg-test1`.users us\r\nINNER JOIN `db-teg-test1`.clients c\r\nON us.client_id = c.id\r\norder by id;",
           "refId": "D",
           "sql": {
             "columns": [
@@ -3842,6 +3926,66 @@
             ],
             "limit": 50
           }
+        },
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT number,\r\ncase\r\n  when number = 1 then 'Telegram only'\r\n  when number = 2 then 'Email only'\r\n  when number = 3 then 'Telegram & Email'\r\n  else 'None'\r\nend as notify_name FROM `db-teg-test1`.count ORDER BY id ASC LIMIT 4;",
+          "refId": "enum_user1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT id,\r\ncase\r\nwhen id = 0 then 'Admin'\r\nwhen id = 1 then 'Operator'\r\nwhen id = 2 then 'Client Admin'\r\nwhen id = 3 then 'Client Operator'\r\n  else 'Viewer'\r\nend as role_name FROM `db-teg-test1`.count ORDER BY id ASC LIMIT 4;",
+          "refId": "enum_user2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
         }
       ],
       "transformations": [
@@ -3869,38 +4013,48 @@
       {
         "current": {
           "selected": false,
-          "text": "Settings",
-          "value": "dc32e257-3a80-44c6-b04e-8dcddbe61430"
+          "text": "General Settings",
+          "value": "General Settings"
         },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "SELECT 'Dashboard' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 5 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'General Settings' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 1 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Device Locations' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 2 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Reports' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 2 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Alarms' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 3 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost');\n",
         "hide": 2,
         "includeAll": false,
         "multi": false,
-        "name": "_panel",
-        "options": [
-          {
-            "selected": false,
-            "text": "Dashboard",
-            "value": "dadcde76-fafe-4e62-81c2-569dc8a101c3"
-          },
-          {
-            "selected": false,
-            "text": "Device Locations",
-            "value": "d3f55778-92a4-4b02-b885-ec56e04b6e41"
-          },
-          {
-            "selected": true,
-            "text": "Settings",
-            "value": "dc32e257-3a80-44c6-b04e-8dcddbe61430"
-          },
-          {
-            "selected": false,
-            "text": "Report",
-            "value": "f75e42aa-b555-4d29-b2f7-817968f7264a"
-          }
-        ],
-        "query": "Dashboard : dadcde76-fafe-4e62-81c2-569dc8a101c3, Device Locations : d3f55778-92a4-4b02-b885-ec56e04b6e41, Settings : dc32e257-3a80-44c6-b04e-8dcddbe61430, Report : f75e42aa-b555-4d29-b2f7-817968f7264a",
+        "name": "getPannels",
+        "options": [],
+        "query": "SELECT 'Dashboard' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 5 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'General Settings' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 1 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Device Locations' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 2 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Reports' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 2 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost')\nUNION ALL\nSELECT 'Alarms' AS access\nFROM `db-teg-test1`.users\nWHERE (role <= 3 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost');\n",
+        "refresh": 1,
+        "regex": "",
         "skipUrlSync": false,
-        "type": "custom"
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "dc32e257-3a80-44c6-b04e-8dcddbe61430",
+          "value": "dc32e257-3a80-44c6-b04e-8dcddbe61430"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select case\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = 'Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE '${__user.email}' = 'admin@localhost' \n  OR email = '${__user.email}';",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "getUID",
+        "options": [],
+        "query": "select case\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = 'Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE '${__user.email}' = 'admin@localhost' \n  OR email = '${__user.email}';",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -3914,6 +4068,6 @@
   "timezone": "",
   "title": "Settings",
   "uid": "dc32e257-3a80-44c6-b04e-8dcddbe61430",
-  "version": 4,
+  "version": 2,
   "weekStart": ""
 }
