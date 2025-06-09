@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 12,
+  "id": 7,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -52,7 +52,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 15,
+        "h": 23,
         "w": 3,
         "x": 0,
         "y": 0
@@ -94,6 +94,1788 @@
       },
       "pluginVersion": "3.9.0",
       "type": "volkovlabs-variable-panel"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "thresholdsStyle": {
+              "mode": "color",
+              "thresholds": []
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 21,
+        "x": 3,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "alertCustomMessage": "",
+        "alwaysVisibleFilter": false,
+        "autoScroll": false,
+        "browserTabNamePattern": "",
+        "collapsedByDefault": false,
+        "customValue": false,
+        "displayMode": "minimize",
+        "emptyValue": false,
+        "favorites": {
+          "enabled": false,
+          "storage": "browser"
+        },
+        "filter": false,
+        "groupSelection": false,
+        "header": true,
+        "isMinimizeForTable": false,
+        "isUseLocalTime": false,
+        "minimizeOutputFormat": "text",
+        "padding": 10,
+        "persistent": false,
+        "saveSelectedGroup": false,
+        "saveSelectedGroupKey": "",
+        "showGroupTotal": false,
+        "showLabel": false,
+        "showName": false,
+        "showResetButton": false,
+        "showTotal": false,
+        "statusSort": false,
+        "sticky": false,
+        "tabsInOrder": true,
+        "variable": "getClient"
+      },
+      "pluginVersion": "3.9.0",
+      "targets": [
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "type": "volkovlabs-variable-panel"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 21,
+        "x": 3,
+        "y": 2
+      },
+      "id": 3,
+      "options": {
+        "buttonGroup": {
+          "orientation": "center",
+          "size": "md"
+        },
+        "confirmModal": {
+          "body": "Please confirm to update changed values",
+          "cancel": "Cancel",
+          "columns": {
+            "include": [
+              "name",
+              "oldValue",
+              "newValue"
+            ],
+            "name": "Label",
+            "newValue": "New Value",
+            "oldValue": "Old Value"
+          },
+          "confirm": "Confirm",
+          "elementDisplayMode": "modified",
+          "title": "Confirm update request"
+        },
+        "elementValueChanged": "console.log(context.panel.elements, context.panel.options.elements);\r\n// // console.log(context.panel.data.series);\r\n\r\nconst fieldElement = context.panel.elements[0].value;\r\n\r\nconst deviceElements = context.panel.data.series[2].fields[2].values;\r\nconst locationElements = context.panel.data.series[2].fields[3].values;\r\n\r\ncontext.panel.onOptionsChange({\r\n  ...context.panel.options,\r\n  elements: context.panel.elements.map((element) => {\r\n\r\n    if (fieldElement == null) { \r\n      return element\r\n    }\r\n\r\n    if (element.id === \"mac_address\") { \r\n      return { ...element, value: deviceElements[fieldElement - 1] };\r\n    }\r\n    if (element.id === \"location\") { \r\n      return { ...element, value: locationElements[fieldElement - 1] };\r\n    }\r\n    return element;\r\n  }),\r\n});\r\n",
+        "elements": [
+          {
+            "allowCustomValue": false,
+            "disabled": false,
+            "helpers": {},
+            "id": "device_location_id",
+            "labelWidth": 10,
+            "options": [
+              {
+                "label": "FFFFFFFFFFFFFFF1",
+                "value": 1
+              },
+              {
+                "label": "FFFFFFFFFFFFFFF2",
+                "value": 2
+              },
+              {
+                "label": "FFFFFFFFFFFFFFF6",
+                "value": 3
+              }
+            ],
+            "optionsSource": "Query",
+            "queryOptions": {
+              "label": "serial",
+              "source": "sensors",
+              "value": "id"
+            },
+            "section": "section1",
+            "title": "Sensor",
+            "tooltip": "",
+            "type": "select",
+            "uid": "5923d821-5fc3-4762-a93b-74bbbe5499ba",
+            "unit": "",
+            "value": 1
+          },
+          {
+            "allowCustomValue": false,
+            "fieldName": "device",
+            "helpers": {},
+            "id": "mac_address",
+            "options": [],
+            "optionsSource": "Query",
+            "queryField": {
+              "label": "sensors:mac_address",
+              "refId": "sensors",
+              "value": "mac_address"
+            },
+            "queryOptions": {
+              "label": "mac",
+              "source": "device_locations",
+              "value": "id"
+            },
+            "section": "section1",
+            "title": "Device",
+            "tooltip": "",
+            "type": "disabled",
+            "uid": "55e8152e-b27d-4af1-8f5c-76d2fa9022f1",
+            "unit": "",
+            "value": "78:21:84:9C:A9:AC"
+          },
+          {
+            "allowCustomValue": false,
+            "fieldName": "location",
+            "helpers": {},
+            "id": "location",
+            "labelWidth": 10,
+            "options": [],
+            "optionsSource": "Custom",
+            "queryField": {
+              "label": "sensors:location",
+              "refId": "sensors",
+              "value": "location"
+            },
+            "section": "section1",
+            "title": "Location",
+            "tooltip": "",
+            "type": "disabled",
+            "uid": "f56dd9d0-ce45-44b7-8b4a-1ec8f7da8494",
+            "unit": "",
+            "value": "CUARTO SERVIDOR"
+          },
+          {
+            "disabled": false,
+            "helpers": {},
+            "id": "set_point",
+            "options": [],
+            "section": "",
+            "title": "Set point",
+            "tooltip": "",
+            "type": "number",
+            "uid": "5cae42f4-d0e6-47d0-a030-611453101b63",
+            "unit": "",
+            "value": 28,
+            "width": 6
+          },
+          {
+            "allowCustomValue": false,
+            "disabled": false,
+            "helpers": {},
+            "id": "type",
+            "labelWidth": 10,
+            "options": [
+              {
+                "id": 0,
+                "label": "=",
+                "value": 0
+              },
+              {
+                "id": 1,
+                "label": "<",
+                "value": 1
+              },
+              {
+                "id": 2,
+                "label": ">",
+                "value": 2
+              },
+              {
+                "id": 3,
+                "label": "<=",
+                "value": 3
+              },
+              {
+                "id": 4,
+                "label": ">=",
+                "value": 4
+              }
+            ],
+            "optionsSource": "Query",
+            "queryOptions": {
+              "label": "name_type",
+              "source": "enums1",
+              "value": "number"
+            },
+            "section": "section2",
+            "title": "Rule type",
+            "tooltip": "",
+            "type": "select",
+            "uid": "0720164e-6bb7-4163-9409-29ab30b9a960",
+            "unit": "",
+            "value": 2
+          },
+          {
+            "allowCustomValue": false,
+            "disabled": false,
+            "helpers": {},
+            "id": "alarm_role",
+            "labelWidth": 10,
+            "options": [
+              {
+                "id": 0,
+                "label": "Clear Alarm",
+                "value": 0
+              },
+              {
+                "id": 1,
+                "label": "Create Alarm",
+                "value": 1
+              }
+            ],
+            "optionsSource": "Query",
+            "queryOptions": {
+              "label": "name_role",
+              "source": "enums2",
+              "value": "number"
+            },
+            "section": "section2",
+            "title": "Alarm role",
+            "tooltip": "",
+            "type": "select",
+            "uid": "ac0bc60f-f74a-48c3-a3ef-ca515e498776",
+            "unit": "",
+            "value": 1
+          },
+          {
+            "allowCustomValue": false,
+            "disabled": false,
+            "helpers": {},
+            "id": "severity",
+            "labelWidth": 10,
+            "options": [
+              {
+                "id": 0,
+                "label": "Normal",
+                "value": 0
+              },
+              {
+                "id": 1,
+                "label": "Minor",
+                "value": 1
+              },
+              {
+                "id": 2,
+                "label": "Major",
+                "value": 2
+              },
+              {
+                "id": 3,
+                "label": "Warning",
+                "value": 3
+              },
+              {
+                "id": 4,
+                "label": "Critical",
+                "value": 4
+              }
+            ],
+            "optionsSource": "Query",
+            "queryOptions": {
+              "label": "name_severity",
+              "source": "enums1",
+              "value": "number"
+            },
+            "section": "section2",
+            "title": "Severity",
+            "tooltip": "",
+            "type": "select",
+            "uid": "b2150a9f-f82f-472b-8f16-06043d74a7e0",
+            "unit": "",
+            "value": 3
+          },
+          {
+            "disabled": false,
+            "fieldName": "notify",
+            "helpers": {},
+            "id": "every",
+            "max": 720,
+            "min": 5,
+            "options": [],
+            "section": "",
+            "title": "Time notify",
+            "tooltip": "",
+            "type": "number",
+            "uid": "68136078-f1fc-445a-a733-b4c8ee22892b",
+            "unit": "min",
+            "value": 5,
+            "width": 6
+          },
+          {
+            "allowCustomValue": false,
+            "disabled": false,
+            "fieldName": "status",
+            "helpers": {},
+            "id": "status",
+            "labelWidth": 10,
+            "options": [
+              {
+                "id": "1",
+                "label": "",
+                "type": "number",
+                "value": 1
+              }
+            ],
+            "optionsSource": "Custom",
+            "section": "",
+            "title": "Enabled",
+            "tooltip": "",
+            "type": "checkboxList",
+            "uid": "7e4966f2-b076-4d42-a424-fef8a39d69a1",
+            "unit": "",
+            "value": [
+              1
+            ]
+          }
+        ],
+        "initial": {
+          "code": "console.log(context.panel.data, context.panel.response, context.panel.initial, context.panel.elements);\n\nreturn;\n\n/**\n * Data Source\n * Requires form elements to be defined\n */\nconst dataQuery = context.utils.toDataQueryResponse(context.panel.response);\nconsole.log(dataQuery);",
+          "contentType": "application/json",
+          "datasource": "a7af9c36-36bc-413b-b7bb-ebba3cc281d2",
+          "getPayload": "return {}",
+          "highlight": false,
+          "highlightColor": "red",
+          "method": "datasource",
+          "payload": {
+            "frame": {
+              "fields": [
+                {
+                  "config": {},
+                  "name": "device",
+                  "type": "string",
+                  "values": [
+                    " "
+                  ]
+                },
+                {
+                  "config": {},
+                  "name": "location",
+                  "type": "string",
+                  "values": [
+                    " "
+                  ]
+                },
+                {
+                  "config": {},
+                  "name": "notify",
+                  "type": "number",
+                  "values": [
+                    5
+                  ]
+                },
+                {
+                  "config": {},
+                  "name": "status",
+                  "type": "number",
+                  "values": [
+                    1
+                  ]
+                }
+              ],
+              "meta": {}
+            }
+          }
+        },
+        "layout": {
+          "orientation": "horizontal",
+          "padding": 10,
+          "sectionVariant": "default",
+          "sections": [
+            {
+              "id": "section1",
+              "name": ""
+            },
+            {
+              "id": "section2",
+              "name": ""
+            },
+            {
+              "id": "",
+              "name": ""
+            }
+          ],
+          "variant": "split"
+        },
+        "reset": {
+          "backgroundColor": "purple",
+          "foregroundColor": "yellow",
+          "icon": "process",
+          "text": "Reset",
+          "variant": "destructive"
+        },
+        "resetAction": {
+          "code": "if (context.panel.response) {\n  context.grafana.notifySuccess(['Update', 'Values updated successfully.']);\n  context.grafana.refresh();\n} else {\n  context.grafana.notifyError(['Update', 'An error occurred updating values.']);\n}",
+          "confirm": true,
+          "getPayload": "return {}",
+          "mode": "initial",
+          "payload": {}
+        },
+        "saveDefault": {
+          "icon": "save",
+          "text": "Save Default",
+          "variant": "hidden"
+        },
+        "submit": {
+          "backgroundColor": "purple",
+          "foregroundColor": "yellow",
+          "icon": "cloud-upload",
+          "text": "Submit",
+          "variant": "primary"
+        },
+        "sync": false,
+        "update": {
+          "code": "if (context.panel.response) {\n  context.grafana.notifySuccess(['Update', 'Values updated successfully.']);\n  context.grafana.refresh();\n} else {\n  context.grafana.notifyError(['Update', 'An error occurred updating values.']);\n}",
+          "confirm": false,
+          "contentType": "application/json",
+          "datasource": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6",
+          "getPayload": "const payload = {};\ncontext.panel.elements.forEach((element) => {\n  if (!element.value) {\n    return;\n  }\n  payload[element.id] = element.value;\n})\nreturn payload;",
+          "method": "datasource",
+          "payload": {
+            "dataset": "`db-teg-test1`",
+            "editorMode": "code",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "INSERT INTO\r\n  `db-teg-test1`.alarm_sensors (\r\n    device_location_id,\r\n    client_id,\r\n    type,\r\n    severity,\r\n    alarm_role,\r\n    set_point,\r\n    every,\r\n    description,\r\n    status\r\n  )\r\nVALUES\r\n  (\r\n    ${payload.device_location_id},\r\n    ${getClientID},\r\n    ${payload.type},\r\n    ${payload.severity},\r\n    ${payload.alarm_role},\r\n    ${payload.set_point},\r\n    ${payload.every},\r\n    '',\r\n    ${payload.status}\r\n  )",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            }
+          },
+          "payloadMode": "all"
+        },
+        "updateEnabled": "auto"
+      },
+      "pluginVersion": "5.1.0",
+      "targets": [
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT number, \r\ncase\r\n  when number = 0 then '='\r\n  when number = 1 then '<'\r\n  when number = 2 then '>'\r\n  when number = 3 then '<='\r\n  when number = 4 then '>='\r\n  else 'Undefined'\r\nend as name_type,\r\ncase\r\n  when number = 0 then 'Normal'\r\n  when number = 1 then 'Minor'\r\n  when number = 2 then 'Major'\r\n  when number = 3 then 'Warning'\r\n  when number = 4 then 'Critical'\r\n  else 'Undefined'\r\nend as name_severity FROM `db-teg-test1`.count ORDER BY id ASC LIMIT 5;",
+          "refId": "enums1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT number, \r\ncase\r\n  when number = 0 then 'Clear Alarm'\r\n  when number = 1 then 'Create Alarm'\r\n  else 'Undefined'\r\nend as name_role FROM `db-teg-test1`.count ORDER BY id ASC LIMIT 2;",
+          "refId": "enums2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT dl.id, s.serial, d.mac_address, l.name location FROM `db-teg-test1`.device_locations dl \r\n  inner join `db-teg-test1`.clients c on c.id = dl.client_id\r\n  inner join `db-teg-test1`.devices d on d.id = dl.device_id\r\n  inner join `db-teg-test1`.sensors s on s.id = dl.sensor_id\r\n  inner join `db-teg-test1`.locations l on l.id = dl.location_id\r\nwhere c.name = '$getClient';",
+          "refId": "sensors",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "type": "volkovlabs-form-panel"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 21,
+        "x": 3,
+        "y": 8
+      },
+      "id": 4,
+      "options": {
+        "nestedObjects": [],
+        "tables": [
+          {
+            "actionsColumnConfig": {
+              "alignment": "start",
+              "fontSize": "md",
+              "label": "",
+              "width": {
+                "auto": false,
+                "value": 100
+              }
+            },
+            "addRow": {
+              "enabled": false,
+              "permission": {
+                "mode": "",
+                "userRole": []
+              },
+              "request": {
+                "datasource": "",
+                "payload": {}
+              }
+            },
+            "deleteRow": {
+              "enabled": true,
+              "permission": {
+                "mode": "",
+                "userRole": []
+              },
+              "request": {
+                "datasource": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6",
+                "payload": {
+                  "dataset": "`db-teg-test1`",
+                  "editorMode": "code",
+                  "format": "table",
+                  "rawQuery": true,
+                  "rawSql": "DELETE FROM `db-teg-test1`.alarm_sensors\r\nWHERE id = '${payload.id}'",
+                  "refId": "A",
+                  "sql": {
+                    "columns": [
+                      {
+                        "parameters": [],
+                        "type": "function"
+                      }
+                    ],
+                    "groupBy": [
+                      {
+                        "property": {
+                          "type": "string"
+                        },
+                        "type": "groupBy"
+                      }
+                    ],
+                    "limit": 50
+                  }
+                }
+              }
+            },
+            "expanded": false,
+            "items": [
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 25,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "id",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "mac_address",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "sensor",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "location",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "center",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 45,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "queryOptions": {
+                      "label": "type",
+                      "source": "enum1",
+                      "value": "number"
+                    },
+                    "type": "select"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "name_type",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "type",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "number"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "set_point",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "queryOptions": {
+                      "label": "severity",
+                      "source": "enum1",
+                      "value": "number"
+                    },
+                    "type": "select"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "name_severity",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "severity",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "queryOptions": {
+                      "label": "role",
+                      "source": "enum2",
+                      "value": "number"
+                    },
+                    "type": "select"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "alarm_role",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "role",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 50,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "max": 720,
+                    "min": 5,
+                    "type": "number"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "every",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "description",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "max": 55,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "boolean"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "status",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "boolean"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "date_created",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": false,
+                "field": {
+                  "name": "device_location_id",
+                  "source": "alarms"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "text",
+                  "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              }
+            ],
+            "name": "Alarms",
+            "pagination": {
+              "defaultPageSize": 10,
+              "enabled": true,
+              "mode": "client"
+            },
+            "rowHighlight": {
+              "backgroundColor": "transparent",
+              "columnId": "",
+              "enabled": true,
+              "scrollTo": "",
+              "smooth": false,
+              "variable": ""
+            },
+            "showHeader": true,
+            "update": {
+              "datasource": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6",
+              "payload": {
+                "dataset": "`db-teg-test1`",
+                "editorMode": "code",
+                "format": "table",
+                "rawQuery": true,
+                "rawSql": "UPDATE `db-teg-test1`.alarm_sensors\r\nSET device_location_id = '${payload.device_location_id}',\r\n    client_id = '${getClientID}',\r\n    type = '${payload.name_type}',\r\n    severity = '${payload.name_severity}',\r\n    alarm_role = '${payload.alarm_role}',\r\n    set_point = '${payload.set_point}',\r\n    every = '${payload.every}',\r\n    description = '${payload.description}',\r\n    status = case when '${payload.status}' = 'true' then 1 else 0 end\r\nWHERE id = '${payload.id}';\r\n",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            }
+          }
+        ],
+        "toolbar": {
+          "alignment": "left"
+        }
+      },
+      "pluginVersion": "2.6.0",
+      "targets": [
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  ad.id,\r\n  dl.id device_location_id,\r\n  d.mac_address,\r\n  s.serial sensor,\r\n  l.name location,\r\n  case\r\n  when ad.type = 0 then '='\r\n  when ad.type = 1 then '<'\r\n  when ad.type = 2 then '>'\r\n  when ad.type = 3 then '<='\r\n  when ad.type = 4 then '>='\r\n  else 'Undefined'\r\nend as name_type,\r\ncase\r\n  when ad.severity = 0 then 'Normal'\r\n  when ad.severity = 1 then 'Minor'\r\n  when ad.severity = 2 then 'Major'\r\n  when ad.severity = 3 then 'Warning'\r\n  when ad.severity = 4 then 'Critical'\r\n  else 'Undefined'\r\nend as name_severity,\r\n  case\r\n  when ad.alarm_role = 0 then 'CLEAR_ALARM'\r\n  when ad.alarm_role = 1 then 'CREATE_ALARM'\r\n  end as alarm_role,\r\n  ad.set_point,\r\n  ad.every,\r\n  ad.description,\r\n  ad.status,\r\n  ad.date_created\r\nFROM\r\n  `db-teg-test1`.alarm_sensors ad\r\n  inner join `db-teg-test1`.device_locations dl on ad.device_location_id = dl.id\r\n  inner join `db-teg-test1`.devices d on dl.device_id = d.id\r\n  inner join `db-teg-test1`.locations l on dl.location_id = l.id\r\n  inner join `db-teg-test1`.sensors s on dl.sensor_id = s.id\r\nWHERE\r\n  ad.client_id = $getClientID ORDER BY ad.id ASC;",
+          "refId": "alarms",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT number, case\r\n  when number = 0 then '='\r\n  when number = 1 then '<'\r\n  when number = 2 then '>'\r\n  when number = 3 then '<='\r\n  when number = 4 then '>='\r\n  else 'Undefined'\r\nend as type,\r\ncase\r\n  when number = 0 then 'Normal'\r\n  when number = 1 then 'Minor'\r\n  when number = 2 then 'Major'\r\n  when number = 3 then 'Warning'\r\n  when number = 4 then 'Critical'\r\n  else 'Undefined'\r\nend as severity\r\nfrom `db-teg-test1`.count ORDER BY id ASC LIMIT 5;",
+          "refId": "enum1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "`db-teg-test1`",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT number, case\r\nwhen number = 0 then 'CLEAR_ALARM'\r\nwhen number = 1 then 'CREATE_ALARM'\r\nelse 'UNDEFINED'\r\nend role\r\nfrom `db-teg-test1`.count ORDER BY id ASC LIMIT 2",
+          "refId": "enum2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "boolean",
+                "targetField": "status"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "volkovlabs-table-panel"
     }
   ],
   "refresh": "",
@@ -104,7 +1886,7 @@
       {
         "allValue": "Alarms",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Alarms",
           "value": "Alarms"
         },
@@ -126,18 +1908,91 @@
         "type": "query"
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2",
+          "value": "e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2"
+        },
         "datasource": {
           "type": "mysql",
           "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
         },
-        "definition": "select\ncase\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE (role <= 3 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost');",
+        "definition": "select\ncase\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = 'Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE (role <= 3 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost');",
         "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "getUID",
         "options": [],
-        "query": "select\ncase\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE (role <= 3 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost');",
+        "query": "select\ncase\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = 'Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE (role <= 3 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost');",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select role from `db-teg-test1`.users where email = '${__user.email}';",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "getUserRole",
+        "options": [],
+        "query": "select role from `db-teg-test1`.users where email = '${__user.email}';",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Iambox",
+          "value": "Iambox"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select c.name from `db-teg-test1`.users u\ninner join `db-teg-test1`.clients c on c.id = u.client_id\nwhere \ncase\nwhen $getUserRole IS NULL then 0\nwhen $getUserRole > 1 then u.email = '${__user.email}'\nwhen $getUserRole <= 1 then 1\nwhen '${__user.email}' = 'admin@localhost' then 1\nelse 0 \nend;",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "getClient",
+        "options": [],
+        "query": "select c.name from `db-teg-test1`.users u\ninner join `db-teg-test1`.clients c on c.id = u.client_id\nwhere \ncase\nwhen $getUserRole IS NULL then 0\nwhen $getUserRole > 1 then u.email = '${__user.email}'\nwhen $getUserRole <= 1 then 1\nwhen '${__user.email}' = 'admin@localhost' then 1\nelse 0 \nend;",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "3",
+          "value": "3"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        },
+        "definition": "select id from `db-teg-test1`.clients where name = '${getClient}';",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "getClientID",
+        "options": [],
+        "query": "select id from `db-teg-test1`.clients where name = '${getClient}';",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -150,10 +2005,12 @@
     "from": "now-6h",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "hidden": true
+  },
   "timezone": "",
   "title": "Alarms Setting",
   "uid": "e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2",
-  "version": 10,
+  "version": 39,
   "weekStart": ""
 }
