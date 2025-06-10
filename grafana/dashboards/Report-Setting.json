@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 7,
+  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -52,7 +52,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 23,
+        "h": 36,
         "w": 3,
         "x": 0,
         "y": 0
@@ -146,7 +146,7 @@
         },
         "filter": false,
         "groupSelection": false,
-        "header": true,
+        "header": false,
         "isMinimizeForTable": false,
         "isUseLocalTime": false,
         "minimizeOutputFormat": "text",
@@ -182,8 +182,8 @@
     },
     {
       "datasource": {
-        "type": "mysql",
-        "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+        "type": "marcusolsson-static-datasource",
+        "uid": "a7af9c36-36bc-413b-b7bb-ebba3cc281d2"
       },
       "gridPos": {
         "h": 6,
@@ -211,253 +211,65 @@
             "oldValue": "Old Value"
           },
           "confirm": "Confirm",
-          "elementDisplayMode": "modified",
+          "elementDisplayMode": "all",
           "title": "Confirm update request"
         },
-        "elementValueChanged": "console.log(context.panel.elements, context.panel.options.elements);\r\n// // console.log(context.panel.data.series);\r\n\r\nconst fieldElement = context.panel.elements[0].value;\r\n\r\nconst deviceElements = context.panel.data.series[2].fields[2].values;\r\nconst locationElements = context.panel.data.series[2].fields[3].values;\r\n\r\ncontext.panel.onOptionsChange({\r\n  ...context.panel.options,\r\n  elements: context.panel.elements.map((element) => {\r\n\r\n    if (fieldElement == null) { \r\n      return element\r\n    }\r\n\r\n    if (element.id === \"mac_address\") { \r\n      return { ...element, value: deviceElements[fieldElement - 1] };\r\n    }\r\n    if (element.id === \"location\") { \r\n      return { ...element, value: locationElements[fieldElement - 1] };\r\n    }\r\n    return element;\r\n  }),\r\n});\r\n",
+        "elementValueChanged": "",
         "elements": [
           {
-            "allowCustomValue": false,
-            "disabled": false,
-            "helpers": {},
-            "id": "device_location_id",
+            "hidden": false,
+            "id": "uid",
             "labelWidth": 10,
-            "options": [
-              {
-                "label": "FFFFFFFFFFFFFFF1",
-                "value": 1
-              },
-              {
-                "label": "FFFFFFFFFFFFFFF2",
-                "value": 2
-              },
-              {
-                "label": "FFFFFFFFFFFFFFF6",
-                "value": 3
-              }
-            ],
-            "optionsSource": "Query",
-            "queryOptions": {
-              "label": "serial",
-              "source": "sensors",
-              "value": "id"
-            },
             "section": "section1",
-            "title": "Sensor",
+            "title": "uid",
             "tooltip": "",
-            "type": "select",
-            "uid": "5923d821-5fc3-4762-a93b-74bbbe5499ba",
+            "type": "string",
+            "uid": "3c9aeb12-8388-4c18-b705-de7143bc153e",
             "unit": "",
-            "value": 1
+            "value": ""
           },
           {
-            "allowCustomValue": false,
-            "fieldName": "device",
-            "helpers": {},
-            "id": "mac_address",
-            "options": [],
-            "optionsSource": "Query",
-            "queryField": {
-              "label": "sensors:mac_address",
-              "refId": "sensors",
-              "value": "mac_address"
-            },
-            "queryOptions": {
-              "label": "mac",
-              "source": "device_locations",
-              "value": "id"
-            },
+            "hidden": false,
+            "id": "template",
+            "labelWidth": 10,
             "section": "section1",
-            "title": "Device",
+            "title": "template",
             "tooltip": "",
-            "type": "disabled",
-            "uid": "55e8152e-b27d-4af1-8f5c-76d2fa9022f1",
+            "type": "string",
+            "uid": "c70c3ee9-4803-4cdc-8c78-a9d079002ea0",
             "unit": "",
-            "value": "78:21:84:9C:A9:AC"
+            "value": ""
           },
           {
-            "allowCustomValue": false,
-            "fieldName": "location",
-            "helpers": {},
-            "id": "location",
+            "hidden": false,
+            "id": "api_token",
             "labelWidth": 10,
-            "options": [],
-            "optionsSource": "Custom",
-            "queryField": {
-              "label": "sensors:location",
-              "refId": "sensors",
-              "value": "location"
-            },
             "section": "section1",
-            "title": "Location",
+            "title": "api_token",
             "tooltip": "",
-            "type": "disabled",
-            "uid": "f56dd9d0-ce45-44b7-8b4a-1ec8f7da8494",
+            "type": "string",
+            "uid": "e4ff4293-f6bd-4f9f-81fb-71f29dcf67e3",
             "unit": "",
-            "value": "CUARTO SERVIDOR"
+            "value": ""
           },
           {
-            "disabled": false,
-            "helpers": {},
-            "id": "set_point",
-            "options": [],
-            "section": "",
-            "title": "Set point",
-            "tooltip": "",
-            "type": "number",
-            "uid": "5cae42f4-d0e6-47d0-a030-611453101b63",
-            "unit": "",
-            "value": 28,
-            "width": 6
-          },
-          {
-            "allowCustomValue": false,
-            "disabled": false,
-            "helpers": {},
-            "id": "type",
-            "labelWidth": 10,
-            "options": [
-              {
-                "id": 0,
-                "label": "=",
-                "value": 0
-              },
-              {
-                "id": 1,
-                "label": "<",
-                "value": 1
-              },
-              {
-                "id": 2,
-                "label": ">",
-                "value": 2
-              },
-              {
-                "id": 3,
-                "label": "<=",
-                "value": 3
-              },
-              {
-                "id": 4,
-                "label": ">=",
-                "value": 4
-              }
-            ],
-            "optionsSource": "Query",
-            "queryOptions": {
-              "label": "name_type",
-              "source": "enums1",
-              "value": "number"
-            },
-            "section": "section2",
-            "title": "Rule type",
-            "tooltip": "",
-            "type": "select",
-            "uid": "0720164e-6bb7-4163-9409-29ab30b9a960",
-            "unit": "",
-            "value": 2
-          },
-          {
-            "allowCustomValue": false,
-            "disabled": false,
-            "helpers": {},
-            "id": "alarm_role",
-            "labelWidth": 10,
-            "options": [
-              {
-                "id": 0,
-                "label": "Clear Alarm",
-                "value": 0
-              },
-              {
-                "id": 1,
-                "label": "Create Alarm",
-                "value": 1
-              }
-            ],
-            "optionsSource": "Query",
-            "queryOptions": {
-              "label": "name_role",
-              "source": "enums2",
-              "value": "number"
-            },
-            "section": "section2",
-            "title": "Alarm role",
-            "tooltip": "",
-            "type": "select",
-            "uid": "ac0bc60f-f74a-48c3-a3ef-ca515e498776",
-            "unit": "",
-            "value": 1
-          },
-          {
-            "allowCustomValue": false,
-            "disabled": false,
-            "helpers": {},
-            "id": "severity",
-            "labelWidth": 10,
-            "options": [
-              {
-                "id": 0,
-                "label": "Normal",
-                "value": 0
-              },
-              {
-                "id": 1,
-                "label": "Minor",
-                "value": 1
-              },
-              {
-                "id": 2,
-                "label": "Major",
-                "value": 2
-              },
-              {
-                "id": 3,
-                "label": "Warning",
-                "value": 3
-              },
-              {
-                "id": 4,
-                "label": "Critical",
-                "value": 4
-              }
-            ],
-            "optionsSource": "Query",
-            "queryOptions": {
-              "label": "name_severity",
-              "source": "enums1",
-              "value": "number"
-            },
-            "section": "section2",
-            "title": "Severity",
-            "tooltip": "",
-            "type": "select",
-            "uid": "b2150a9f-f82f-472b-8f16-06043d74a7e0",
-            "unit": "",
-            "value": 3
-          },
-          {
-            "disabled": false,
-            "fieldName": "notify",
-            "helpers": {},
+            "fieldName": "every",
             "id": "every",
-            "max": 720,
-            "min": 5,
-            "options": [],
-            "section": "",
-            "title": "Time notify",
+            "labelWidth": 10,
+            "max": 52,
+            "min": 1,
+            "section": "section2",
+            "title": "every",
             "tooltip": "",
             "type": "number",
-            "uid": "68136078-f1fc-445a-a733-b4c8ee22892b",
-            "unit": "min",
-            "value": 5,
-            "width": 6
+            "uid": "95fdabe0-4503-4432-838e-1d2feddf18e4",
+            "unit": "weeks",
+            "value": 0,
+            "width": 8
           },
           {
             "allowCustomValue": false,
-            "disabled": false,
             "fieldName": "status",
-            "helpers": {},
             "id": "status",
             "labelWidth": 10,
             "options": [
@@ -469,15 +281,13 @@
               }
             ],
             "optionsSource": "Custom",
-            "section": "",
-            "title": "Enabled",
+            "section": "section2",
+            "title": "status",
             "tooltip": "",
             "type": "checkboxList",
-            "uid": "7e4966f2-b076-4d42-a424-fef8a39d69a1",
+            "uid": "c44e320a-169e-4ef2-95da-91c176cacfd1",
             "unit": "",
-            "value": [
-              1
-            ]
+            "value": []
           }
         ],
         "initial": {
@@ -493,26 +303,10 @@
               "fields": [
                 {
                   "config": {},
-                  "name": "device",
-                  "type": "string",
-                  "values": [
-                    " "
-                  ]
-                },
-                {
-                  "config": {},
-                  "name": "location",
-                  "type": "string",
-                  "values": [
-                    " "
-                  ]
-                },
-                {
-                  "config": {},
-                  "name": "notify",
+                  "name": "every",
                   "type": "number",
                   "values": [
-                    5
+                    1
                   ]
                 },
                 {
@@ -557,7 +351,7 @@
         },
         "resetAction": {
           "code": "if (context.panel.response) {\n  context.grafana.notifySuccess(['Update', 'Values updated successfully.']);\n  context.grafana.refresh();\n} else {\n  context.grafana.notifyError(['Update', 'An error occurred updating values.']);\n}",
-          "confirm": true,
+          "confirm": false,
           "getPayload": "return {}",
           "mode": "initial",
           "payload": {}
@@ -574,10 +368,10 @@
           "text": "Submit",
           "variant": "primary"
         },
-        "sync": false,
+        "sync": true,
         "update": {
           "code": "if (context.panel.response) {\n  context.grafana.notifySuccess(['Update', 'Values updated successfully.']);\n  context.grafana.refresh();\n} else {\n  context.grafana.notifyError(['Update', 'An error occurred updating values.']);\n}",
-          "confirm": false,
+          "confirm": true,
           "contentType": "application/json",
           "datasource": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6",
           "getPayload": "const payload = {};\ncontext.panel.elements.forEach((element) => {\n  if (!element.value) {\n    return;\n  }\n  payload[element.id] = element.value;\n})\nreturn payload;",
@@ -587,7 +381,7 @@
             "editorMode": "code",
             "format": "table",
             "rawQuery": true,
-            "rawSql": "INSERT INTO\r\n  `db-teg-test1`.alarm_sensors (\r\n    device_location_id,\r\n    client_id,\r\n    type,\r\n    severity,\r\n    alarm_role,\r\n    set_point,\r\n    every,\r\n    description,\r\n    status\r\n  )\r\nVALUES\r\n  (\r\n    ${payload.device_location_id},\r\n    ${getClientID},\r\n    ${payload.type},\r\n    ${payload.severity},\r\n    ${payload.alarm_role},\r\n    ${payload.set_point},\r\n    ${payload.every},\r\n    '',\r\n    ${payload.status}\r\n  )",
+            "rawSql": "INSERT INTO\r\n  `db-teg-test1`.reports (\r\n    client_id,\r\n    `uuid`,\r\n    template,\r\n    api_token,\r\n    every,\r\n    status\r\n  )\r\nVALUES\r\n  (\r\n    ${getClientID},\r\n    '${payload.uid}',\r\n    '${payload.template}',\r\n    '${payload.api_token}',\r\n    ${payload.every},\r\n    ${payload.status}\r\n  )",
             "refId": "A",
             "sql": {
               "columns": [
@@ -614,93 +408,11 @@
       "pluginVersion": "5.1.0",
       "targets": [
         {
-          "dataset": "`db-teg-test1`",
           "datasource": {
-            "type": "mysql",
-            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
+            "type": "marcusolsson-static-datasource",
+            "uid": "a7af9c36-36bc-413b-b7bb-ebba3cc281d2"
           },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "SELECT number, \r\ncase\r\n  when number = 0 then '='\r\n  when number = 1 then '<'\r\n  when number = 2 then '>'\r\n  when number = 3 then '<='\r\n  when number = 4 then '>='\r\n  else 'Undefined'\r\nend as name_type,\r\ncase\r\n  when number = 0 then 'Normal'\r\n  when number = 1 then 'Minor'\r\n  when number = 2 then 'Major'\r\n  when number = 3 then 'Warning'\r\n  when number = 4 then 'Critical'\r\n  else 'Undefined'\r\nend as name_severity FROM `db-teg-test1`.count ORDER BY id ASC LIMIT 5;",
-          "refId": "enums1",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "`db-teg-test1`",
-          "datasource": {
-            "type": "mysql",
-            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "hide": false,
-          "rawQuery": true,
-          "rawSql": "SELECT number, \r\ncase\r\n  when number = 0 then 'Clear Alarm'\r\n  when number = 1 then 'Create Alarm'\r\n  else 'Undefined'\r\nend as name_role FROM `db-teg-test1`.count ORDER BY id ASC LIMIT 2;",
-          "refId": "enums2",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "`db-teg-test1`",
-          "datasource": {
-            "type": "mysql",
-            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "hide": false,
-          "rawQuery": true,
-          "rawSql": "SELECT dl.id, s.serial, d.mac_address, l.name location FROM `db-teg-test1`.device_locations dl \r\n  inner join `db-teg-test1`.clients c on c.id = dl.client_id\r\n  inner join `db-teg-test1`.devices d on d.id = dl.device_id\r\n  inner join `db-teg-test1`.sensors s on s.id = dl.sensor_id\r\n  inner join `db-teg-test1`.locations l on l.id = dl.location_id\r\nwhere c.name = '$getClient';",
-          "refId": "sensors",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
+          "refId": "A"
         }
       ],
       "type": "volkovlabs-form-panel"
@@ -734,7 +446,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 15,
+        "h": 8,
         "w": 21,
         "x": 3,
         "y": 8
@@ -771,32 +483,8 @@
                 "userRole": []
               },
               "request": {
-                "datasource": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6",
-                "payload": {
-                  "dataset": "`db-teg-test1`",
-                  "editorMode": "code",
-                  "format": "table",
-                  "rawQuery": true,
-                  "rawSql": "DELETE FROM `db-teg-test1`.alarm_sensors\r\nWHERE id = '${payload.id}'",
-                  "refId": "A",
-                  "sql": {
-                    "columns": [
-                      {
-                        "parameters": [],
-                        "type": "function"
-                      }
-                    ],
-                    "groupBy": [
-                      {
-                        "property": {
-                          "type": "string"
-                        },
-                        "type": "groupBy"
-                      }
-                    ],
-                    "limit": 50
-                  }
-                }
+                "datasource": "",
+                "payload": {}
               }
             },
             "expanded": false,
@@ -834,7 +522,7 @@
                 "enabled": true,
                 "field": {
                   "name": "id",
-                  "source": "alarms"
+                  "source": "A"
                 },
                 "fileCell": {
                   "size": "md",
@@ -894,7 +582,7 @@
                   "editor": {
                     "type": "string"
                   },
-                  "enabled": false,
+                  "enabled": true,
                   "permission": {
                     "mode": "",
                     "userRole": []
@@ -902,8 +590,8 @@
                 },
                 "enabled": true,
                 "field": {
-                  "name": "mac_address",
-                  "source": "alarms"
+                  "name": "uuid",
+                  "source": "A"
                 },
                 "fileCell": {
                   "size": "md",
@@ -963,7 +651,7 @@
                   "editor": {
                     "type": "string"
                   },
-                  "enabled": false,
+                  "enabled": true,
                   "permission": {
                     "mode": "",
                     "userRole": []
@@ -971,8 +659,8 @@
                 },
                 "enabled": true,
                 "field": {
-                  "name": "sensor",
-                  "source": "alarms"
+                  "name": "template",
+                  "source": "A"
                 },
                 "fileCell": {
                   "size": "md",
@@ -1032,7 +720,7 @@
                   "editor": {
                     "type": "string"
                   },
-                  "enabled": false,
+                  "enabled": true,
                   "permission": {
                     "mode": "",
                     "userRole": []
@@ -1040,8 +728,8 @@
                 },
                 "enabled": true,
                 "field": {
-                  "name": "location",
-                  "source": "alarms"
+                  "name": "api_token",
+                  "source": "A"
                 },
                 "fileCell": {
                   "size": "md",
@@ -1058,6 +746,77 @@
                   "mode": "basic",
                   "valueDisplayMode": "text",
                   "valueSize": 14
+                },
+                "group": false,
+                "label": "",
+                "newRowEdit": {
+                  "editor": {
+                    "type": "string"
+                  },
+                  "enabled": false
+                },
+                "objectId": "",
+                "pin": "",
+                "preformattedStyle": false,
+                "scale": "auto",
+                "showingRows": 20,
+                "sort": {
+                  "descFirst": false,
+                  "enabled": false
+                },
+                "type": "auto"
+              },
+              {
+                "aggregation": "none",
+                "appearance": {
+                  "alignment": "start",
+                  "background": {
+                    "applyToRow": false
+                  },
+                  "colors": {},
+                  "header": {
+                    "fontSize": "md"
+                  },
+                  "width": {
+                    "auto": true,
+                    "min": 20,
+                    "value": 100
+                  },
+                  "wrap": true
+                },
+                "columnTooltip": "",
+                "edit": {
+                  "editor": {
+                    "max": 52,
+                    "min": 1,
+                    "type": "number"
+                  },
+                  "enabled": true,
+                  "permission": {
+                    "mode": "",
+                    "userRole": []
+                  }
+                },
+                "enabled": true,
+                "field": {
+                  "name": "every",
+                  "source": "A"
+                },
+                "fileCell": {
+                  "size": "md",
+                  "text": "Download",
+                  "variant": "primary"
+                },
+                "filter": {
+                  "enabled": false,
+                  "mode": "client",
+                  "variable": ""
+                },
+                "footer": [],
+                "gauge": {
+                  "mode": "basic",
+                  "valueDisplayMode": "color",
+                  "valueSize": 18
                 },
                 "group": false,
                 "label": "",
@@ -1091,440 +850,7 @@
                   },
                   "width": {
                     "auto": true,
-                    "max": 45,
-                    "min": 20,
-                    "value": 100
-                  },
-                  "wrap": true
-                },
-                "columnTooltip": "",
-                "edit": {
-                  "editor": {
-                    "queryOptions": {
-                      "label": "type",
-                      "source": "enum1",
-                      "value": "number"
-                    },
-                    "type": "select"
-                  },
-                  "enabled": true,
-                  "permission": {
-                    "mode": "",
-                    "userRole": []
-                  }
-                },
-                "enabled": true,
-                "field": {
-                  "name": "name_type",
-                  "source": "alarms"
-                },
-                "fileCell": {
-                  "size": "md",
-                  "text": "Download",
-                  "variant": "primary"
-                },
-                "filter": {
-                  "enabled": false,
-                  "mode": "client",
-                  "variable": ""
-                },
-                "footer": [],
-                "gauge": {
-                  "mode": "basic",
-                  "valueDisplayMode": "text",
-                  "valueSize": 14
-                },
-                "group": false,
-                "label": "type",
-                "newRowEdit": {
-                  "editor": {
-                    "type": "string"
-                  },
-                  "enabled": false
-                },
-                "objectId": "",
-                "pin": "",
-                "preformattedStyle": false,
-                "scale": "auto",
-                "showingRows": 20,
-                "sort": {
-                  "descFirst": false,
-                  "enabled": false
-                },
-                "type": "auto"
-              },
-              {
-                "aggregation": "none",
-                "appearance": {
-                  "alignment": "start",
-                  "background": {
-                    "applyToRow": false
-                  },
-                  "colors": {},
-                  "header": {
-                    "fontSize": "md"
-                  },
-                  "width": {
-                    "auto": true,
-                    "min": 20,
-                    "value": 100
-                  },
-                  "wrap": true
-                },
-                "columnTooltip": "",
-                "edit": {
-                  "editor": {
-                    "type": "number"
-                  },
-                  "enabled": true,
-                  "permission": {
-                    "mode": "",
-                    "userRole": []
-                  }
-                },
-                "enabled": true,
-                "field": {
-                  "name": "set_point",
-                  "source": "alarms"
-                },
-                "fileCell": {
-                  "size": "md",
-                  "text": "Download",
-                  "variant": "primary"
-                },
-                "filter": {
-                  "enabled": false,
-                  "mode": "client",
-                  "variable": ""
-                },
-                "footer": [],
-                "gauge": {
-                  "mode": "basic",
-                  "valueDisplayMode": "text",
-                  "valueSize": 14
-                },
-                "group": false,
-                "label": "",
-                "newRowEdit": {
-                  "editor": {
-                    "type": "string"
-                  },
-                  "enabled": false
-                },
-                "objectId": "",
-                "pin": "",
-                "preformattedStyle": false,
-                "scale": "auto",
-                "showingRows": 20,
-                "sort": {
-                  "descFirst": false,
-                  "enabled": false
-                },
-                "type": "auto"
-              },
-              {
-                "aggregation": "none",
-                "appearance": {
-                  "alignment": "start",
-                  "background": {
-                    "applyToRow": false
-                  },
-                  "colors": {},
-                  "header": {
-                    "fontSize": "md"
-                  },
-                  "width": {
-                    "auto": true,
-                    "min": 20,
-                    "value": 100
-                  },
-                  "wrap": true
-                },
-                "columnTooltip": "",
-                "edit": {
-                  "editor": {
-                    "queryOptions": {
-                      "label": "severity",
-                      "source": "enum1",
-                      "value": "number"
-                    },
-                    "type": "select"
-                  },
-                  "enabled": true,
-                  "permission": {
-                    "mode": "",
-                    "userRole": []
-                  }
-                },
-                "enabled": true,
-                "field": {
-                  "name": "name_severity",
-                  "source": "alarms"
-                },
-                "fileCell": {
-                  "size": "md",
-                  "text": "Download",
-                  "variant": "primary"
-                },
-                "filter": {
-                  "enabled": false,
-                  "mode": "client",
-                  "variable": ""
-                },
-                "footer": [],
-                "gauge": {
-                  "mode": "basic",
-                  "valueDisplayMode": "text",
-                  "valueSize": 14
-                },
-                "group": false,
-                "label": "severity",
-                "newRowEdit": {
-                  "editor": {
-                    "type": "string"
-                  },
-                  "enabled": false
-                },
-                "objectId": "",
-                "pin": "",
-                "preformattedStyle": false,
-                "scale": "auto",
-                "showingRows": 20,
-                "sort": {
-                  "descFirst": false,
-                  "enabled": false
-                },
-                "type": "auto"
-              },
-              {
-                "aggregation": "none",
-                "appearance": {
-                  "alignment": "start",
-                  "background": {
-                    "applyToRow": false
-                  },
-                  "colors": {},
-                  "header": {
-                    "fontSize": "md"
-                  },
-                  "width": {
-                    "auto": true,
-                    "min": 20,
-                    "value": 100
-                  },
-                  "wrap": true
-                },
-                "columnTooltip": "",
-                "edit": {
-                  "editor": {
-                    "queryOptions": {
-                      "label": "role",
-                      "source": "enum2",
-                      "value": "number"
-                    },
-                    "type": "select"
-                  },
-                  "enabled": true,
-                  "permission": {
-                    "mode": "",
-                    "userRole": []
-                  }
-                },
-                "enabled": true,
-                "field": {
-                  "name": "alarm_role",
-                  "source": "alarms"
-                },
-                "fileCell": {
-                  "size": "md",
-                  "text": "Download",
-                  "variant": "primary"
-                },
-                "filter": {
-                  "enabled": false,
-                  "mode": "client",
-                  "variable": ""
-                },
-                "footer": [],
-                "gauge": {
-                  "mode": "basic",
-                  "valueDisplayMode": "text",
-                  "valueSize": 14
-                },
-                "group": false,
-                "label": "role",
-                "newRowEdit": {
-                  "editor": {
-                    "type": "string"
-                  },
-                  "enabled": false
-                },
-                "objectId": "",
-                "pin": "",
-                "preformattedStyle": false,
-                "scale": "auto",
-                "showingRows": 20,
-                "sort": {
-                  "descFirst": false,
-                  "enabled": false
-                },
-                "type": "auto"
-              },
-              {
-                "aggregation": "none",
-                "appearance": {
-                  "alignment": "start",
-                  "background": {
-                    "applyToRow": false
-                  },
-                  "colors": {},
-                  "header": {
-                    "fontSize": "md"
-                  },
-                  "width": {
-                    "auto": true,
                     "max": 50,
-                    "min": 20,
-                    "value": 100
-                  },
-                  "wrap": true
-                },
-                "columnTooltip": "",
-                "edit": {
-                  "editor": {
-                    "max": 720,
-                    "min": 5,
-                    "type": "number"
-                  },
-                  "enabled": true,
-                  "permission": {
-                    "mode": "",
-                    "userRole": []
-                  }
-                },
-                "enabled": true,
-                "field": {
-                  "name": "every",
-                  "source": "alarms"
-                },
-                "fileCell": {
-                  "size": "md",
-                  "text": "Download",
-                  "variant": "primary"
-                },
-                "filter": {
-                  "enabled": false,
-                  "mode": "client",
-                  "variable": ""
-                },
-                "footer": [],
-                "gauge": {
-                  "mode": "basic",
-                  "valueDisplayMode": "text",
-                  "valueSize": 14
-                },
-                "group": false,
-                "label": "",
-                "newRowEdit": {
-                  "editor": {
-                    "type": "string"
-                  },
-                  "enabled": false
-                },
-                "objectId": "",
-                "pin": "",
-                "preformattedStyle": false,
-                "scale": "auto",
-                "showingRows": 20,
-                "sort": {
-                  "descFirst": false,
-                  "enabled": false
-                },
-                "type": "auto"
-              },
-              {
-                "aggregation": "none",
-                "appearance": {
-                  "alignment": "start",
-                  "background": {
-                    "applyToRow": false
-                  },
-                  "colors": {},
-                  "header": {
-                    "fontSize": "md"
-                  },
-                  "width": {
-                    "auto": true,
-                    "min": 20,
-                    "value": 100
-                  },
-                  "wrap": true
-                },
-                "columnTooltip": "",
-                "edit": {
-                  "editor": {
-                    "type": "string"
-                  },
-                  "enabled": true,
-                  "permission": {
-                    "mode": "",
-                    "userRole": []
-                  }
-                },
-                "enabled": true,
-                "field": {
-                  "name": "description",
-                  "source": "alarms"
-                },
-                "fileCell": {
-                  "size": "md",
-                  "text": "Download",
-                  "variant": "primary"
-                },
-                "filter": {
-                  "enabled": false,
-                  "mode": "client",
-                  "variable": ""
-                },
-                "footer": [],
-                "gauge": {
-                  "mode": "basic",
-                  "valueDisplayMode": "text",
-                  "valueSize": 14
-                },
-                "group": false,
-                "label": "",
-                "newRowEdit": {
-                  "editor": {
-                    "type": "string"
-                  },
-                  "enabled": false
-                },
-                "objectId": "",
-                "pin": "",
-                "preformattedStyle": false,
-                "scale": "auto",
-                "showingRows": 20,
-                "sort": {
-                  "descFirst": false,
-                  "enabled": false
-                },
-                "type": "auto"
-              },
-              {
-                "aggregation": "none",
-                "appearance": {
-                  "alignment": "start",
-                  "background": {
-                    "applyToRow": false
-                  },
-                  "colors": {},
-                  "header": {
-                    "fontSize": "md"
-                  },
-                  "width": {
-                    "auto": true,
-                    "max": 55,
                     "min": 20,
                     "value": 100
                   },
@@ -1544,7 +870,7 @@
                 "enabled": true,
                 "field": {
                   "name": "status",
-                  "source": "alarms"
+                  "source": "A"
                 },
                 "fileCell": {
                   "size": "md",
@@ -1612,8 +938,8 @@
                 },
                 "enabled": true,
                 "field": {
-                  "name": "date_created",
-                  "source": "alarms"
+                  "name": "date_update",
+                  "source": "A"
                 },
                 "fileCell": {
                   "size": "md",
@@ -1679,10 +1005,10 @@
                     "userRole": []
                   }
                 },
-                "enabled": false,
+                "enabled": true,
                 "field": {
-                  "name": "device_location_id",
-                  "source": "alarms"
+                  "name": "date_created",
+                  "source": "A"
                 },
                 "fileCell": {
                   "size": "md",
@@ -1720,7 +1046,7 @@
                 "type": "auto"
               }
             ],
-            "name": "Alarms",
+            "name": "reports",
             "pagination": {
               "defaultPageSize": 10,
               "enabled": true,
@@ -1729,7 +1055,7 @@
             "rowHighlight": {
               "backgroundColor": "transparent",
               "columnId": "",
-              "enabled": true,
+              "enabled": false,
               "scrollTo": "",
               "smooth": false,
               "variable": ""
@@ -1742,7 +1068,7 @@
                 "editorMode": "code",
                 "format": "table",
                 "rawQuery": true,
-                "rawSql": "UPDATE `db-teg-test1`.alarm_sensors\r\nSET device_location_id = '${payload.device_location_id}',\r\n    client_id = '${getClientID}',\r\n    type = '${payload.name_type}',\r\n    severity = '${payload.name_severity}',\r\n    alarm_role = '${payload.alarm_role}',\r\n    set_point = '${payload.set_point}',\r\n    every = '${payload.every}',\r\n    description = '${payload.description}',\r\n    status = case when '${payload.status}' = 'true' then 1 else 0 end\r\nWHERE id = '${payload.id}';\r\n",
+                "rawSql": "UPDATE `db-teg-test1`.reports\r\nSET\r\n    client_id = '${getClientID}',\r\n    uuid = '${payload.uuid}',\r\n    template = '${payload.template}',\r\n    api_token = '${payload.api_token}',\r\n    every = '${payload.every}',\r\n    status = case when '${payload.status}' = 'true' then 1 else 0 end\r\nWHERE id = '${payload.id}';\r\n",
                 "refId": "A",
                 "sql": {
                   "columns": [
@@ -1780,68 +1106,8 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  ad.id,\r\n  dl.id device_location_id,\r\n  d.mac_address,\r\n  s.serial sensor,\r\n  l.name location,\r\n  case\r\n  when ad.type = 0 then '='\r\n  when ad.type = 1 then '<'\r\n  when ad.type = 2 then '>'\r\n  when ad.type = 3 then '<='\r\n  when ad.type = 4 then '>='\r\n  else 'Undefined'\r\nend as name_type,\r\ncase\r\n  when ad.severity = 0 then 'Normal'\r\n  when ad.severity = 1 then 'Minor'\r\n  when ad.severity = 2 then 'Major'\r\n  when ad.severity = 3 then 'Warning'\r\n  when ad.severity = 4 then 'Critical'\r\n  else 'Undefined'\r\nend as name_severity,\r\n  case\r\n  when ad.alarm_role = 0 then 'CLEAR_ALARM'\r\n  when ad.alarm_role = 1 then 'CREATE_ALARM'\r\n  end as alarm_role,\r\n  ad.set_point,\r\n  ad.every,\r\n  ad.description,\r\n  ad.status,\r\n  ad.date_created\r\nFROM\r\n  `db-teg-test1`.alarm_sensors ad\r\n  inner join `db-teg-test1`.device_locations dl on ad.device_location_id = dl.id\r\n  inner join `db-teg-test1`.devices d on dl.device_id = d.id\r\n  inner join `db-teg-test1`.locations l on dl.location_id = l.id\r\n  inner join `db-teg-test1`.sensors s on dl.sensor_id = s.id\r\nWHERE\r\n  ad.client_id = $getClientID ORDER BY ad.id ASC;",
-          "refId": "alarms",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "`db-teg-test1`",
-          "datasource": {
-            "type": "mysql",
-            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "hide": false,
-          "rawQuery": true,
-          "rawSql": "SELECT number, case\r\n  when number = 0 then '='\r\n  when number = 1 then '<'\r\n  when number = 2 then '>'\r\n  when number = 3 then '<='\r\n  when number = 4 then '>='\r\n  else 'Undefined'\r\nend as type,\r\ncase\r\n  when number = 0 then 'Normal'\r\n  when number = 1 then 'Minor'\r\n  when number = 2 then 'Major'\r\n  when number = 3 then 'Warning'\r\n  when number = 4 then 'Critical'\r\n  else 'Undefined'\r\nend as severity\r\nfrom `db-teg-test1`.count ORDER BY id ASC LIMIT 5;",
-          "refId": "enum1",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "`db-teg-test1`",
-          "datasource": {
-            "type": "mysql",
-            "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "hide": false,
-          "rawQuery": true,
-          "rawSql": "SELECT number, case\r\nwhen number = 0 then 'CLEAR_ALARM'\r\nwhen number = 1 then 'CREATE_ALARM'\r\nelse 'UNDEFINED'\r\nend role\r\nfrom `db-teg-test1`.count ORDER BY id ASC LIMIT 2",
-          "refId": "enum2",
+          "rawSql": "SELECT\r\n  id,\r\n  uuid,\r\n  template,\r\n  api_token,\r\n  every,\r\n  status,\r\n  date_update,\r\n  date_created\r\nFROM\r\n  `db-teg-test1`.reports\r\nWHERE\r\n  client_id = '${getClientID}';",
+          "refId": "A",
           "sql": {
             "columns": [
               {
@@ -1887,8 +1153,8 @@
         "allValue": "Alarms",
         "current": {
           "selected": false,
-          "text": "Alarms",
-          "value": "Alarms"
+          "text": "Reports",
+          "value": "Reports"
         },
         "datasource": {
           "type": "mysql",
@@ -1910,20 +1176,20 @@
       {
         "current": {
           "selected": false,
-          "text": "e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2",
-          "value": "e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2"
+          "text": "f75e42aa-b555-4d29-b2f7-817968f7264a",
+          "value": "f75e42aa-b555-4d29-b2f7-817968f7264a"
         },
         "datasource": {
           "type": "mysql",
           "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
         },
-        "definition": "select\ncase\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = 'Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE (role <= 3 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost');",
+        "definition": "select case\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = 'Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE '${__user.email}' = 'admin@localhost' \n  OR email = '${__user.email}';",
         "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "getUID",
         "options": [],
-        "query": "select\ncase\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = 'Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE (role <= 3 OR '${__user.email}' = 'admin@localhost') \n  AND (email = '${__user.email}' OR '${__user.email}' = 'admin@localhost');",
+        "query": "select case\nwhen '${getPannels}' = 'Dashboard' then 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nwhen '${getPannels}' = 'General Settings' then 'dc32e257-3a80-44c6-b04e-8dcddbe61430'\nwhen '${getPannels}' = 'Device Locations' then 'd3f55778-92a4-4b02-b885-ec56e04b6e41'\nwhen '${getPannels}' = 'Alarms' then 'e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2'\nwhen '${getPannels}' = 'Reports' then 'f75e42aa-b555-4d29-b2f7-817968f7264a'\nelse 'dadcde76-fafe-4e62-81c2-569dc8a101c3'\nend\nFROM `db-teg-test1`.users\nWHERE '${__user.email}' = 'admin@localhost' \n  OR email = '${__user.email}';",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1963,13 +1229,13 @@
           "type": "mysql",
           "uid": "e24f5e1e-1c80-4692-b69a-8fcce13d21f6"
         },
-        "definition": "select c.name from `db-teg-test1`.users u\ninner join `db-teg-test1`.clients c on c.id = u.client_id\nwhere \ncase\nwhen $getUserRole IS NULL then 0\nwhen $getUserRole > 1 then u.email = '${__user.email}'\nwhen $getUserRole <= 1 then 1\nwhen '${__user.email}' = 'admin@localhost' then 1\nelse 0 \nend;",
+        "definition": "select c.name from `db-teg-test1`.users u\ninner join `db-teg-test1`.clients c on c.id = u.client_id\nwhere \ncase\nwhen $getUserRole > 1 then u.email = '${__user.email}'\nwhen $getUserRole <= 1 then 1\nwhen '${__user.email}' = 'admin@localhost' then 1\nelse 0 \nend;",
         "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "getClient",
         "options": [],
-        "query": "select c.name from `db-teg-test1`.users u\ninner join `db-teg-test1`.clients c on c.id = u.client_id\nwhere \ncase\nwhen $getUserRole IS NULL then 0\nwhen $getUserRole > 1 then u.email = '${__user.email}'\nwhen $getUserRole <= 1 then 1\nwhen '${__user.email}' = 'admin@localhost' then 1\nelse 0 \nend;",
+        "query": "select c.name from `db-teg-test1`.users u\ninner join `db-teg-test1`.clients c on c.id = u.client_id\nwhere \ncase\nwhen $getUserRole > 1 then u.email = '${__user.email}'\nwhen $getUserRole <= 1 then 1\nwhen '${__user.email}' = 'admin@localhost' then 1\nelse 0 \nend;",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2005,12 +1271,10 @@
     "from": "now-6h",
     "to": "now"
   },
-  "timepicker": {
-    "hidden": true
-  },
+  "timepicker": {},
   "timezone": "",
-  "title": "Alarms Setting",
-  "uid": "e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2",
-  "version": 40,
+  "title": "Report Setting",
+  "uid": "f75e42aa-b555-4d29-b2f7-817968f7264a",
+  "version": 21,
   "weekStart": ""
 }
