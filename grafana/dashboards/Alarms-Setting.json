@@ -224,14 +224,17 @@
             "labelWidth": 10,
             "options": [
               {
+                "id": 1,
                 "label": "FFFFFFFFFFFFFFF1",
                 "value": 1
               },
               {
+                "id": 2,
                 "label": "FFFFFFFFFFFFFFF2",
                 "value": 2
               },
               {
+                "id": 3,
                 "label": "FFFFFFFFFFFFFFF6",
                 "value": 3
               }
@@ -355,7 +358,7 @@
             "type": "select",
             "uid": "0720164e-6bb7-4163-9409-29ab30b9a960",
             "unit": "",
-            "value": 2
+            "value": 3
           },
           {
             "allowCustomValue": false,
@@ -387,7 +390,7 @@
             "type": "select",
             "uid": "ac0bc60f-f74a-48c3-a3ef-ca515e498776",
             "unit": "",
-            "value": 1
+            "value": 0
           },
           {
             "allowCustomValue": false,
@@ -397,28 +400,23 @@
             "labelWidth": 10,
             "options": [
               {
-                "id": 0,
-                "label": "Normal",
+                "label": "Critical",
                 "value": 0
               },
               {
-                "id": 1,
-                "label": "Minor",
+                "label": "Warning",
                 "value": 1
               },
               {
-                "id": 2,
                 "label": "Major",
                 "value": 2
               },
               {
-                "id": 3,
-                "label": "Warning",
+                "label": "Minor",
                 "value": 3
               },
               {
-                "id": 4,
-                "label": "Critical",
+                "label": "Normal",
                 "value": 4
               }
             ],
@@ -434,7 +432,7 @@
             "type": "select",
             "uid": "b2150a9f-f82f-472b-8f16-06043d74a7e0",
             "unit": "",
-            "value": 3
+            "value": 4
           },
           {
             "disabled": false,
@@ -452,32 +450,6 @@
             "unit": "min",
             "value": 5,
             "width": 6
-          },
-          {
-            "allowCustomValue": false,
-            "disabled": false,
-            "fieldName": "status",
-            "helpers": {},
-            "id": "status",
-            "labelWidth": 10,
-            "options": [
-              {
-                "id": "1",
-                "label": "",
-                "type": "number",
-                "value": 1
-              }
-            ],
-            "optionsSource": "Custom",
-            "section": "",
-            "title": "Enabled",
-            "tooltip": "",
-            "type": "checkboxList",
-            "uid": "7e4966f2-b076-4d42-a424-fef8a39d69a1",
-            "unit": "",
-            "value": [
-              1
-            ]
           }
         ],
         "initial": {
@@ -513,14 +485,6 @@
                   "type": "number",
                   "values": [
                     5
-                  ]
-                },
-                {
-                  "config": {},
-                  "name": "status",
-                  "type": "number",
-                  "values": [
-                    1
                   ]
                 }
               ],
@@ -587,7 +551,7 @@
             "editorMode": "code",
             "format": "table",
             "rawQuery": true,
-            "rawSql": "INSERT INTO\r\n  `db-teg-test1`.alarm_sensors (\r\n    device_location_id,\r\n    client_id,\r\n    type,\r\n    severity,\r\n    alarm_role,\r\n    set_point,\r\n    every,\r\n    description,\r\n    status\r\n  )\r\nVALUES\r\n  (\r\n    ${payload.device_location_id},\r\n    ${getClientID},\r\n    ${payload.type},\r\n    ${payload.severity},\r\n    ${payload.alarm_role},\r\n    ${payload.set_point},\r\n    ${payload.every},\r\n    '',\r\n    ${payload.status}\r\n  )",
+            "rawSql": "INSERT INTO\r\n  `db-teg-test1`.alarm_sensors (\r\n    device_location_id,\r\n    client_id,\r\n    type,\r\n    severity,\r\n    alarm_role,\r\n    set_point,\r\n    every,\r\n    description,\r\n    status\r\n  )\r\nVALUES\r\n  (\r\n    ${payload.device_location_id},\r\n    ${getClientID},\r\n    ${payload.type},\r\n    ${payload.severity},\r\n    ${payload.alarm_role},\r\n    ${payload.set_point},\r\n    ${payload.every},\r\n    '',\r\n    case when ${payload.severity} = 4 then 1 else 0 end\r\n  )",
             "refId": "A",
             "sql": {
               "columns": [
@@ -622,7 +586,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT number, \r\ncase\r\n  when number = 0 then '='\r\n  when number = 1 then '<'\r\n  when number = 2 then '>'\r\n  when number = 3 then '<='\r\n  when number = 4 then '>='\r\n  else 'Undefined'\r\nend as name_type,\r\ncase\r\n  when number = 0 then 'Normal'\r\n  when number = 1 then 'Minor'\r\n  when number = 2 then 'Major'\r\n  when number = 3 then 'Warning'\r\n  when number = 4 then 'Critical'\r\n  else 'Undefined'\r\nend as name_severity FROM `db-teg-test1`.count ORDER BY id ASC LIMIT 5;",
+          "rawSql": "SELECT number, \r\ncase\r\n  when number = 0 then '='\r\n  when number = 1 then '<'\r\n  when number = 2 then '>'\r\n  when number = 3 then '<='\r\n  when number = 4 then '>='\r\n  else 'Undefined'\r\nend as name_type,\r\ncase\r\n  when number = 4 then 'Normal'\r\n  when number = 3 then 'Minor'\r\n  when number = 2 then 'Major'\r\n  when number = 1 then 'Warning'\r\n  when number = 0 then 'Critical'\r\n  else 'Undefined'\r\nend as name_severity FROM `db-teg-test1`.count ORDER BY id ASC LIMIT 5;",
           "refId": "enums1",
           "sql": {
             "columns": [
@@ -1533,9 +1497,9 @@
                 "columnTooltip": "",
                 "edit": {
                   "editor": {
-                    "type": "boolean"
+                    "type": "string"
                   },
-                  "enabled": true,
+                  "enabled": false,
                   "permission": {
                     "mode": "",
                     "userRole": []
@@ -1579,7 +1543,7 @@
                   "descFirst": false,
                   "enabled": false
                 },
-                "type": "boolean"
+                "type": "auto"
               },
               {
                 "aggregation": "none",
@@ -1729,7 +1693,7 @@
             "rowHighlight": {
               "backgroundColor": "transparent",
               "columnId": "",
-              "enabled": true,
+              "enabled": false,
               "scrollTo": "",
               "smooth": false,
               "variable": ""
@@ -1780,7 +1744,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  ad.id,\r\n  dl.id device_location_id,\r\n  d.mac_address,\r\n  s.serial sensor,\r\n  l.name location,\r\n  case\r\n  when ad.type = 0 then '='\r\n  when ad.type = 1 then '<'\r\n  when ad.type = 2 then '>'\r\n  when ad.type = 3 then '<='\r\n  when ad.type = 4 then '>='\r\n  else 'Undefined'\r\nend as name_type,\r\ncase\r\n  when ad.severity = 0 then 'Normal'\r\n  when ad.severity = 1 then 'Minor'\r\n  when ad.severity = 2 then 'Major'\r\n  when ad.severity = 3 then 'Warning'\r\n  when ad.severity = 4 then 'Critical'\r\n  else 'Undefined'\r\nend as name_severity,\r\n  case\r\n  when ad.alarm_role = 0 then 'CLEAR_ALARM'\r\n  when ad.alarm_role = 1 then 'CREATE_ALARM'\r\n  end as alarm_role,\r\n  ad.set_point,\r\n  ad.every,\r\n  ad.description,\r\n  ad.status,\r\n  ad.date_created\r\nFROM\r\n  `db-teg-test1`.alarm_sensors ad\r\n  inner join `db-teg-test1`.device_locations dl on ad.device_location_id = dl.id\r\n  inner join `db-teg-test1`.devices d on dl.device_id = d.id\r\n  inner join `db-teg-test1`.locations l on dl.location_id = l.id\r\n  inner join `db-teg-test1`.sensors s on dl.sensor_id = s.id\r\nWHERE\r\n  ad.client_id = $getClientID ORDER BY ad.id ASC;",
+          "rawSql": "SELECT\r\n  ad.id,\r\n  dl.id device_location_id,\r\n  d.mac_address,\r\n  s.serial sensor,\r\n  l.name location,\r\n  case\r\n  when ad.type = 0 then '='\r\n  when ad.type = 1 then '<'\r\n  when ad.type = 2 then '>'\r\n  when ad.type = 3 then '<='\r\n  when ad.type = 4 then '>='\r\n  else 'Undefined'\r\nend as name_type,\r\ncase\r\n  when ad.severity = 4 then 'Normal'\r\n  when ad.severity = 3 then 'Minor'\r\n  when ad.severity = 2 then 'Major'\r\n  when ad.severity = 1 then 'Warning'\r\n  when ad.severity = 0 then 'Critical'\r\n  else 'Undefined'\r\nend as name_severity,\r\n  case\r\n  when ad.alarm_role = 0 then 'CLEAR_ALARM'\r\n  when ad.alarm_role = 1 then 'CREATE_ALARM'\r\n  end as alarm_role,\r\n  ad.set_point,\r\n  ad.every,\r\n  ad.description,\r\n  case when ad.status = 1 then 'Active' else 'Desactive' end status,\r\n  ad.date_created\r\nFROM\r\n  `db-teg-test1`.alarm_sensors ad\r\n  inner join `db-teg-test1`.device_locations dl on ad.device_location_id = dl.id\r\n  inner join `db-teg-test1`.devices d on dl.device_id = d.id\r\n  inner join `db-teg-test1`.locations l on dl.location_id = l.id\r\n  inner join `db-teg-test1`.sensors s on dl.sensor_id = s.id\r\nWHERE\r\n  ad.client_id = $getClientID ORDER BY ad.id ASC;",
           "refId": "alarms",
           "sql": {
             "columns": [
@@ -1810,7 +1774,7 @@
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT number, case\r\n  when number = 0 then '='\r\n  when number = 1 then '<'\r\n  when number = 2 then '>'\r\n  when number = 3 then '<='\r\n  when number = 4 then '>='\r\n  else 'Undefined'\r\nend as type,\r\ncase\r\n  when number = 0 then 'Normal'\r\n  when number = 1 then 'Minor'\r\n  when number = 2 then 'Major'\r\n  when number = 3 then 'Warning'\r\n  when number = 4 then 'Critical'\r\n  else 'Undefined'\r\nend as severity\r\nfrom `db-teg-test1`.count ORDER BY id ASC LIMIT 5;",
+          "rawSql": "SELECT number, case\r\n  when number = 0 then '='\r\n  when number = 1 then '<'\r\n  when number = 2 then '>'\r\n  when number = 3 then '<='\r\n  when number = 4 then '>='\r\n  else 'Undefined'\r\nend as type,\r\ncase\r\n  when number = 4 then 'Normal'\r\n  when number = 3 then 'Minor'\r\n  when number = 2 then 'Major'\r\n  when number = 1 then 'Warning'\r\n  when number = 0 then 'Critical'\r\n  else 'Undefined'\r\nend as severity\r\nfrom `db-teg-test1`.count ORDER BY id ASC LIMIT 5;",
           "refId": "enum1",
           "sql": {
             "columns": [
@@ -1861,20 +1825,7 @@
           }
         }
       ],
-      "transformations": [
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "destinationType": "boolean",
-                "targetField": "status"
-              }
-            ],
-            "fields": {}
-          }
-        }
-      ],
+      "transformations": [],
       "type": "volkovlabs-table-panel"
     }
   ],
@@ -2011,6 +1962,6 @@
   "timezone": "",
   "title": "Alarms Setting",
   "uid": "e837ab4d-0bb5-4cbc-83b3-6a1d8b59f7a2",
-  "version": 40,
+  "version": 45,
   "weekStart": ""
 }
