@@ -1,4 +1,7 @@
 services:
+  volumes:
+    grafana-storage:
+
   grafana:
     container_name: grafana
     build:
@@ -27,6 +30,7 @@ services:
       - ./grafana/dist:/var/lib/grafana/plugins/volkovlabs-app
       - ./grafana/provisioning:/etc/grafana/provisioning
       - ./grafana/dashboards:/etc/grafana/provisioning/dashboards/demo
+      - ./grafana/data-storage:/var/lib/grafana
     networks:
       - mynet
 
