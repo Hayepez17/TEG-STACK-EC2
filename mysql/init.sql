@@ -66,7 +66,7 @@ DROP TABLE IF EXISTS `clients`;
 CREATE TABLE `clients` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `telegram_group` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `direction` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
   `image` longtext COLLATE utf8mb4_general_ci, -- Campo para imagen en base64
   `status` tinyint NOT NULL DEFAULT '1',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -222,7 +222,7 @@ CREATE TABLE `users` (
   `client_id` bigint NOT NULL,
   `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `phone` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `telegram_group` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `enable_notifications` tinyint NOT NULL DEFAULT '0',
   `role` tinyint NOT NULL DEFAULT '5',
   `status` tinyint NOT NULL DEFAULT '1',
